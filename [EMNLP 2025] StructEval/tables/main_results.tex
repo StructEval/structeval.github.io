@@ -1,0 +1,37 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table*}[!ht]
+\centering
+\resizebox{0.95\textwidth}{!}{
+\begin{tabular}{l|cccc|c}
+\toprule
+\multirow{2}{*}{\textbf{Models}}  & \multicolumn{2}{c}{\textbf{StructEval-T}} & \multicolumn{2}{c}{\textbf{StructEval-V}} & \multirow{2}{*}{\textbf{Average}} \\
+                         & \textbf{generation}      & \textbf{conversion}     & \textbf{generation}      & \textbf{conversion}     &                          \\
+\midrule
+\multicolumn{6}{c}{Open Source}                                                                                           \\
+\midrule
+Llama-3.1-8B-Instruct~\cite{grattafiori2024llama3herdmodels}    & 60.22           & 71.26          & 54.44           & 61.15          & 61.77                    \\
+Meta-Llama-3-8B-Instruct~\cite{grattafiori2024llama3herdmodels}& 49.18           & 53.65          & 46.61           & 56.91          & 51.59                    \\
+Phi-3-mini-128k-instruct~\cite{abdin2024phi3technicalreporthighly} & 47.39           & 29.78          & 44.77           & 41.23          & 40.79                    \\
+Phi-4-mini-instruct~\cite{abdin2024phi4technicalreport}      & 51.38           & 72.39          & 51.62           & 52.48          & 56.97                    \\
+Qwen2.5-7B-Instruct ~\cite{qwen2.5}     & 59.21           & 62.18          & 53.28           & 61.43          & 59.03                    \\
+Qwen3-4B ~\cite{yang2025qwen3technicalreport}                & \textbf{64.95}  & \textbf{81.13} & \textbf{57.00}  & \textbf{65.08} & \textbf{67.04}           \\
+\midrule
+\multicolumn{6}{c}{Close Source}                                                                                          \\
+\midrule
+Gemini-1.5-pro~\cite{team2023gemini}           & 88.07           & 74.24          & 58.11           & 66.59          & 71.75                    \\
+Gemini-2.0-flash~\cite{team2023gemini}         & 72.42           & 72.20          & 53.62           & 51.97          & 62.55                    \\
+GPT-4.1-mini~\cite{openai2025gpt41}             & \textbf{92.57}  & 75.63          & 64.30           & 70.04          & 75.64                    \\
+GPT-4o~\cite{Hurst2024GPT4oSC}                   & 91.52           & 73.95          & \textbf{65.39}  & 73.20          & \textbf{76.02}           \\
+GPT-4o-mini~\cite{Hurst2024GPT4oSC}              & 79.86           & 75.57          & 60.77           & \textbf{76.54} & 73.19                    \\
+o1-mini~\cite{Contributors2024OpenAIOS}                  & 88.12           & \textbf{81.82} & 61.98           & 70.40          & 75.58                    \\
+
+\midrule
+\rowcolor{LightCyan}
+$\Delta$ (o1-mini - Qwen3-4B) & 23.17 & 0.70 & 4.99 & 5.32 & 8.54 \\
+\bottomrule
+\end{tabular}
+}
+\caption{Main evaluation results of \structeval }
+\label{tab:main_results}
+\end{table*}

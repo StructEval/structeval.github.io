@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{p{3.2cm}p{3.5cm}p{8cm}}
+\toprule
+\textbf{Rule Type} & \textbf{Example} & \textbf{Description} \\
+\midrule
+Literal key access & \texttt{planet.name} & Checks if key \texttt{name} exists as a child of object \texttt{planet}. \\
+Nested lists with index & \texttt{planet.moons[0].name} & Verifies first item in \texttt{moons} list has a \texttt{name} field. \\
+Wildcard in lists & \texttt{planet.moons.*.name} & Confirms that \texttt{name} exists for \textit{any} moon in the list. \\
+Backtick quoting & \texttt{data.`key.with.dots`} & Treats entire quoted token as a single key, useful for special characters. \\
+CSV header check & \texttt{csv::discovery.location} & Ensures CSV output has a column named \texttt{discovery.location}. \\
+XML attribute fallback & \texttt{@id} & Looks for \texttt{id} attribute, using \texttt{@} to indicate XML format. \\
+\bottomrule
+\end{tabular}
+\caption{Supported rule types in our path-based evaluation.}
+\label{tab:path_checker}
+\end{table*}

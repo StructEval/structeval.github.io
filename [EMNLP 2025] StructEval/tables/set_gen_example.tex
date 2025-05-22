@@ -1,0 +1,123 @@
+% \begin{table*}[!h]
+% \small
+% \centering
+% \begin{tabular}{|p{0.6\textwidth}|p{0.3\textwidth}|}
+% \hline
+% \textbf{StructEval-T Question} & \textbf{KeyWords} \\
+% \hline
+% Please output JSON code.
+
+% Task:
+
+% Summarize metadata about a fictional scientific article.
+
+% Feature Requirements:
+
+% 1. The top-level field "title" holds the article title as a string.
+
+% 2. The field "authors" is a list containing exactly 2 items.
+
+% 3. Each item in "authors" contains "name" (string) and "affiliation" (string).
+
+% 4. The "publication.year" field gives the year as an integer.
+
+% 5. The "keywords" field is a list of strings. & 
+% title
+
+% authors[0].name
+
+% authors[1].affiliation
+
+% publication.year
+
+% keywords[2] \\
+% \hline
+% \end{tabular}
+% \caption{Example question and key words of the StructEval-T generation task}
+% \label{tab:set_gen_example}
+% \end{table*}
+
+% \begin{tcolorbox}[
+%   colback=white,
+%   colframe=gray!70,
+%   title={\small\bfseries StructEval-T Question, KeyWords},
+%   colbacktitle=gray!10,
+%   coltitle=black,
+%   fontupper=\small,
+%   enhanced,
+%   left=2mm,
+%   right=2mm,
+%   boxrule=0.4pt,
+%   arc=1mm
+% ]
+% Please output \texttt{JSON} code.\\[4pt]
+% \textbf{Task:}\\[2pt]
+% Summarize metadata about a fictional scientific article.
+
+% \vspace{6pt}
+% \textbf{Feature Requirements:}\\[-5pt]
+% \begin{enumerate}[nosep,label=\arabic*.,leftmargin=*]
+%   \item Top-level field \texttt{"title"} is a string containing the article title.
+%   \item Field \texttt{"authors"} is a list of exactly two items.
+%   \item Each element of \texttt{"authors"} contains \texttt{"name"} (string) and \texttt{"affiliation"} (string).
+%   \item Field \texttt{"publication.year"} is an integer.
+%   \item Field \texttt{"keywords"} is a list of strings.
+% \end{enumerate}
+
+% \vspace{6pt}
+% \hdashrule[0.5ex]{\linewidth}{0.5pt}{2pt 2pt}
+% \vspace{-5pt}
+
+% \textbf{Keywords:}\\[-5pt]
+% \begin{itemize}[nosep,leftmargin=*]
+%   \item \texttt{title}
+%   \item \texttt{authors[0].name}
+%   \item \texttt{authors[1].affiliation}
+%   \item \texttt{publication.year}
+%   \item \texttt{keywords[2]}
+% \end{itemize}
+% \end{tcolorbox}
+% \captionof{figure}{Example question and key words of the StructEval-T generation task}
+% \label{fig:set_gen_example}
+
+\begin{figure}[!th]
+    \begin{tcolorbox}[
+      colback=white,
+      colframe=gray!70,
+      title={\small\bfseries StructEval-T Question, KeyWords},
+      colbacktitle=gray!10,
+      coltitle=black,
+      fontupper=\small,
+      enhanced,
+      left=2mm,
+      right=2mm,
+      boxrule=0.4pt,
+      arc=1mm
+    ]
+    Please output \texttt{JSON} code.\\[4pt]
+    \textbf{Task:}\\[2pt]
+    Summarize metadata about a fictional scientific article.
+    \vspace{6pt}
+    \textbf{Feature Requirements:}\\[-5pt]
+    \begin{enumerate}[nosep,label=\arabic*.,leftmargin=*]
+      \item Top-level field \texttt{"title"} is a string containing the article title.
+      \item Field \texttt{"authors"} is a list of exactly two items.
+      \item Each element of \texttt{"authors"} contains \texttt{"name"} (string) and \texttt{"affiliation"} (string).
+      \item Field \texttt{"publication.year"} is an integer.
+      \item Field \texttt{"keywords"} is a list of strings.
+    \end{enumerate}
+    \vspace{6pt}
+    \hdashrule[0.5ex]{\linewidth}{0.5pt}{2pt 2pt}
+    \vspace{-5pt}
+    \textbf{Keywords:}\\[-5pt]
+    \begin{itemize}[nosep,leftmargin=*]
+      \item \texttt{title}
+      \item \texttt{authors[0].name}
+      \item \texttt{authors[1].affiliation}
+      \item \texttt{publication.year}
+      \item \texttt{keywords[2]}
+    \end{itemize}
+    \end{tcolorbox}
+    \caption{Example question and key words of the StructEval-T generation task}
+    \label{fig:set_gen_example}
+\end{figure}

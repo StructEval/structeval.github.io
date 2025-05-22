@@ -1,0 +1,96 @@
+\newpage
+\clearpage
+\onecolumn
+\section{Example Appendix}
+\label{sec:appendix}
+
+% \subsection{Prompt Templates}
+% \input{tables/inference_prompt_template}
+
+\subsection{Task Distributions}
+\input{tables/task_dist}
+
+\newpage
+\clearpage
+\subsection{Subtask Performance}
+\label{appendix:subtask_perf}
+\input{tables/subtask_perf}
+
+\newpage
+\clearpage
+
+\subsection{Examples of rendered image}
+\label{appendix:rendered_images}
+\input{figures/rendered_images}
+
+\newpage
+\clearpage
+
+\subsection{Task Generation Prompt}
+\label{appendix:task_prompt}
+
+\begin{figure}[!th]
+
+  \begin{tcolorbox}[
+    colback=white,
+    colframe=gray!70,
+    title={\small\bfseries Sample Prompt},
+    colbacktitle=gray!10,
+    coltitle=black,
+    fontupper=\small,
+    enhanced,
+    left=2mm,
+    right=2mm,
+    boxrule=0.4pt,
+    arc=1mm
+  ]
+You are a prompt-design assistant building benchmark items for conversion tasks.
+
+\textbf{Input Format:} \{input\_type\} \\
+\textbf{Output Format:} \{output\_type\}
+
+\textbf{Your task:} Think silently through the checklist and then output a single JSON object with:
+\begin{itemize}
+  \item \texttt{"raw\_output\_metric"}: dot-paths for the expected keys/attributes in the \{output\_type\} structure
+  \item \texttt{"query"}: A generated input format \{input\_type\} code inside \texttt{<code>...</code>} tags.
+\end{itemize}
+
+\textbf{Assumed Mapping Rule (state it implicitly in the paths):}
+\begin{itemize}
+  \item \textbf{No XML attributes} unless absolutely necessary. \\
+        If an attribute is required, map it to a key prefixed with \texttt{"@"}, and include that in dot-paths.
+\end{itemize}
+
+\hrulefill \\
+\textbf{CHECKLIST (INTERNAL – DO NOT OUTPUT)}
+\begin{enumerate}
+  \item Pick a super creative and random domain.
+  \item Generate \{input\_type\} code with:
+    \begin{itemize}
+      \item At least two levels of nesting
+      \item At least one list inside an object/element
+    \end{itemize}
+  \item Avoid XML attributes where possible; prefer child elements.
+  \item Wrap the code in \texttt{<code>...</code>} tags.
+  \item Dot-path rules:
+    \begin{itemize}
+      \item JSON / YAML / TOML: \texttt{parent.child}, \texttt{list[0].child}
+      \item XML: \texttt{element.child} or \texttt{element.@attr} (only if used)
+      \item CSV: \texttt{csv::Header} (not used here)
+    \end{itemize}
+\end{enumerate}
+
+\hrulefill \\
+\textbf{OUTPUT FORMAT}
+\begin{verbatim}
+{
+  "raw_output_metric": ["<dot_path1>",
+                        "<dot_path2>", ...],
+  "query": "<code>...</code>"
+}
+\end{verbatim}
+
+  \end{tcolorbox}
+  \caption{Example task generation prompt}
+  \label{fig:sample_task_prompt}
+\end{figure}

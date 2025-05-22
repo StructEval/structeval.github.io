@@ -1,0 +1,155 @@
+% This must be in the first 5 lines to tell arXiv to use pdfLaTeX, which is strongly recommended.
+\pdfoutput=1
+% In particular, the hyperref package requires pdfLaTeX in order to break URLs across lines.
+
+\documentclass[11pt]{article}
+
+% Change "review" to "final" to generate the final (sometimes called camera-ready) version.
+% Change to "preprint" to generate a non-anonymous version with page numbers.
+\usepackage[review]{acl}
+
+\usepackage{listings}
+
+\usepackage{graphicx}
+
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[most]{tcolorbox}
+\usepackage{arydshln}
+% For proper rendering and hyphenation of words containing Latin characters (including in bib files)
+\usepackage[T1]{fontenc}
+% For Vietnamese characters
+% \usepackage[T5]{fontenc}
+% See https://www.latex-project.org/help/documentation/encguide.pdf for other character sets
+
+% This assumes your files are encoded as UTF8
+\usepackage[utf8]{inputenc}
+
+% This is not strictly necessary, and may be commented out,
+% but it will improve the layout of the manuscript,
+% and will typically save some space.
+\usepackage{microtype}
+\usepackage{amssymb} % for \checkmark
+
+% This is also not strictly necessary, and may be commented out.
+% However, it will improve the aesthetics of text in
+% the typewriter font.
+\usepackage{inconsolata}
+
+%Including images in your LaTeX document requires adding
+%additional package(s)
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{dashrule}
+\usepackage{amsmath}
+
+\usepackage{multirow}
+
+\usepackage{booktabs,tabularx,rotating,siunitx}
+\sisetup{
+  detect-weight       = true,
+  detect-inline-weight= math,
+  round-mode          = places,
+  round-precision     = 2
+}
+\definecolor{imgborder}{gray}{0.7}
+
+\usepackage{subcaption}
+\usepackage[export]{adjustbox} % for \fbox around images if desired
+
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{bbm}
+\usepackage{pifont}
+\usepackage{makecell}
+% % \usepackage{nidanfloat}
+\usepackage{resizegather}
+% \usepackage{booktabs,makecell,tabularx} 
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{cleveref}
+\usepackage{multirow}
+% \usepackage{booktabs,array}
+% % \usepackage{bm}
+\usepackage{color, colortbl}
+\usepackage{xcolor}
+\usepackage{url}
+% \usepackage{hyperref}
+% % \definecolor{Gray}{gray}{0.9}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{xspace}
+
+\usepackage{tablefootnote}
+
+
+\usepackage{booktabs}    % for \toprule etc.
+\usepackage{array}       % for p{width}
+% If the title and author information does not fit in the area allocated, uncomment the following
+%
+%\setlength\titlebox{<dim>}
+%
+% and set <dim> to something 5cm or larger.
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\dongfu}[1]{\textcolor{blue}{[DongfuJiang: #1]}}
+\newcommand{\jialin}[1]{\textcolor{purple}{[Jialin: #1]}}
+\newcommand{\wenhu}[1]{\textcolor{red}{[WenhuChen: #1]}}
+\newcommand{\structeval}{\textsc{StructEval}\xspace}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+
+\title{StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs}
+
+% Author information can be set in various styles:
+% For several authors from the same institution:
+% \author{Author 1 \and ... \and Author n \\
+%         Address line \\ ... \\ Address line}
+% if the names do not fit well on one line use
+%         Author 1 \\ {\bf Author 2} \\ ... \\ {\bf Author n} \\
+% For authors from different institutions:
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \And  ... \And
+%         Author n \\ Address line \\ ... \\ Address line}
+% To start a separate ``row'' of authors use \AND, as in
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \AND
+%         Author 2 \\ Address line \\ ... \\ Address line \And
+%         Author 3 \\ Address line \\ ... \\ Address line}
+
+\author{Jialin Yang, Dongfu Jiang, }
+
+\begin{document}
+\maketitle
+
+% \begin{abstract}
+
+% As Large Language Models (LLMs) are increasingly used in software and content generation workflows, their ability to produce structured outputs, both in renderable formats (e.g., HTML, Matplotlib, React, SVG, Tikz, etc.) and non-renderable data formats (JSON, XML, YAML TOML, CSV, etc.), have become a critical area of evaluation. Although prior benchmarks have assessed LLMs on code synthesis or data-to-text tasks, few provide a systematic investigation into how reliably models follow structural constraints across diverse output formats. In this work, we aim to assess LLMs' structured output generation capabilities under two core paradigms: (1) generation tasks, where the model produces structured outputs in response to natural language queries, and (2) conversion tasks, where the model translates between structured formats (for example, HTML to React). We curate a diverse suite of datasets spanning 21 formats and 44 types of task that propose both format adherence and structure correctness metrics to evaluate fidelity. Our results show that 
+
+% \end{abstract}
+
+\begin{abstract}
+As Large Language Models (LLMs) become integral to software development workflows, their ability to generate structured outputs has become critically important. We introduce \textbf{StructEval}, a comprehensive benchmark for evaluating LLMs' capabilities in producing both non-renderable (JSON, YAML, CSV) and renderable (HTML, React, SVG) structured formats. Unlike prior benchmarks, StructEval systematically evaluates structural fidelity across diverse formats through two paradigms: \textbf{(1)} generation tasks, producing structured output from natural language prompts, and \textbf{(2)} conversion tasks, translating between structured formats. Our benchmark encompasses 18 formats and 44 types of task, with novel metrics for format adherence and structural correctness. Results reveal significant performance gaps—even state-of-the-art models like o1-mini achieve only $75.58$ average score, with open-source alternatives lagging approximately $10$ points behind. We find generation tasks more challenging than conversion tasks, and producing correct visual content more difficult than generating text-only structures.
+\end{abstract}
+
+
+
+\input{sections/1_intro}
+\input{sections/3_structeval}
+\input{sections/4_exp}
+\input{sections/2_related}
+
+\input{sections/5_conclusion}
+\input{sections/6_limitations}
+
+% \clearpage
+\bibliography{custom}
+
+
+\appendix
+\input{sections/appendix}
+\end{document}

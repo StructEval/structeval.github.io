@@ -1,0 +1,41 @@
+
+\section{Experiments}
+\input{tables/main_results}
+
+\subsection{Experimental Setup}
+
+\paragraph{Evaluation Models.}
+We evaluate a range of open-source and commercial large language models (LLMs) using our benchmark. For open-source models, we use Meta-Llama-3-8B-Instruct~\cite{grattafiori2024llama3herdmodels}, Phi-3-mini-128k-instruct~\cite{abdin2024phi3technicalreporthighly}, Phi-4-mini-instruct~\cite{abdin2024phi4technicalreport}, Qwen2.5-7B-Instruct~\cite{yang2024qwen2technicalreport}, and Qwen3-4B~\cite{yang2025qwen3technicalreport}. For commercial models, we use Gemini-1.5-pro and Gemini-2.0-flash~\cite{team2023gemini}, GPT-4.1-mini and GPT-4o~\cite{Hurst2024GPT4oSC}, GPT-4o-mini, and o1-mini~\cite{Contributors2024OpenAIOS}. All tasks are evaluated in a zero-shot setting using consistent prompts and parameters.
+
+
+\paragraph{Inference Setup.} All model generations are performed using \texttt{LLM-Engine}~\cite{jiang2024llmengines}, a unified inference framework that supports both open-source backends (e.g., VLLM, SGLang, Together), and commercial APIs (e.g., OpenAI, Claude, Gemini). For open-source models, we specifically utilize the vLLM engine for efficiency ~\cite{kwon2023efficient}. For close-source models, we simply call the APIs. As shown in ~\autoref{tab:inference_configuration}, we use greedy decoding by default. All tasks are evaluated zero-shot using uniform task prompts defined in ~\autoref{tab:prompt_template}. When performing the VQA evaluation, we select GPT-4.1-mini as the VLM due to its superior multimodal abilities~\citep{openai2025gpt41}. We apply the VQA prompt template defined in ~\autoref{fig:vqa_prompt_template} and ask the VLM to decide whether each VQA pair matches the rendered visual image at once.
+
+\input{tables/inference_configuration}
+
+\vspace{1mm}
+\noindent\textbf{Evaluation.} Output generations are automatically scored using the evaluation pipeline described in ~\autoref{sec:eval_metrics}, including syntactic validity checking, keyword matching, and VQA accuracy. GPT-4.1-mini ~\citep{Hurst2024GPT4oSC} is used as the vision-language model for all VQA-based evaluations.
+
+\subsection{Main Results}
+
+\paragraph{Overall Performance}
+\autoref{tab:main_results} summarizes the performance of all evaluated models across the two main task groups: \emph{StructEval-T} and \emph{StructEval-V}, each further divided into \emph{generation} and \emph{conversion} subtasks. Overall, GPT-4o achieves the highest average score of $76.02\%$ among all 12 models. The best-performing open-source model is Qwen3-4B, with a score of $67.04\%$, trailing GPT-4o by approximately 10 percentage points. While GPT-4o excels particularly in the \emph{generation} tasks within the \emph{StructEval-V} category, Qwen3-4B demonstrates consistently strong performance across all task types among open-source models. This likely reflects Qwen3-4B's robust reasoning capabilities relative to other open-source alternatives.
+
+In contrast, the lowest-performing model is \texttt{phi-3-mini-128k-instruct}, with an average score of only $40.79\%$. Although one might attribute this to its relatively small size of 3.8 billion parameters, model size alone does not fully explain the poor results. For example, \texttt{phi-3-mini} underperforms even compared to similarly sized models such as \texttt{phi-4-mini-instruct}. Notably, it achieves the lowest score in \emph{StructEval-T} conversion tasks, a category where models with strong reasoning abilities—such as \texttt{o1-mini} ($81.82\%$) and \texttt{Qwen3-4B} ($81.13\%$)—tend to perform well.
+
+Error analysis reveals two key failure modes for \texttt{phi-3-mini-128k-instruct}. First, in the \emph{TOML-to-YAML} conversion task, the model frequently produces malformed closing tags, outputting \texttt{|<|END\_CODE|>} instead of the correct \texttt{<|END\_CODE|>}, which significantly penalizes its score. Second, in the \emph{CSV-to-JSON} conversion task, the model fails to capture hierarchical relationships (e.g., parent-child) specified in the CSV headers, leading to structurally incorrect JSON outputs. These recurring structural errors in \emph{StructEval-T} conversion tasks substantially contribute to the model’s overall low performance.
+
+\paragraph{Open-Source vs. Closed-Source Models}
+When comparing open-source models and commercial models, we can see that by $\Delta$ (close$_{avg}$ - open$_{avg}$) value, which is the difference between the average score of commercial source model and open model, that commercial model's score is consistently higher than open-source models, this makes sense given the much larger parameters of commercial models by scaling law. We can see that commercial models exceed open-source models on average the most on generation tasks in StructEval-T setting, and the performance gap is smallest on generation tasks in StructEval-V setting. 
+
+\paragraph{Generation vs. Conversion}
+A comparison between \emph{generation} and \emph{conversion} tasks in both \emph{StructEval-T} and \emph{StructEval-V} settings reveals that, in general, models perform better on conversion tasks than on generation tasks. An exception to this trend occurs in the \emph{StructEval-T} setting, where commercial models tend to outperform on generation tasks, while open-source models show the opposite behavior—achieving higher scores on conversion tasks.
+
+Under a temperature setting of 1, commercial models attain an average score of $75.78\%$ on \emph{StructEval-T} generation tasks. In contrast, open-source models average only $8.58\%$ on the same tasks for the TOML format. This considerable disparity in TOML generation performance partly explains why commercial models perform better on \emph{StructEval-T} generation tasks overall. However, the performance gap is not confined to TOML—commercial models also lead in the other four generation formats within \emph{StructEval-T}.
+
+In the \emph{StructEval-V} setting, commercial models significantly outperform open-source counterparts on generation tasks involving complex visual formats such as Mermaid and TikZ. These tasks require advanced visual reasoning capabilities, which are more prevalent in multimodal commercial LLMs like GPT-4o and GPT-4o-mini.
+
+
+\paragraph{Subtasks Analysis}
+Meanwhile, several tasks in both in generation and conversion types appear to be saturated, with most models achieving scores exceeding $90\%$. These include generation tasks for common formats such as JSON, HTML, CSV, Markdown, and YAML, as well as conversion tasks like YAML-to-JSON, React-to-HTML, TOML-to-JSON, and Markdown-to-HTML. Such results indicate that LLMs have already mastered many structurally straightforward format transformations.
+
+There remain several challenging tasks where all models struggle significantly, including generation tasks like Text$\rightarrow$TOML, Text$\rightarrow$SVG, Text$\rightarrow$Mermaid, and Text$\rightarrow$Vega, as well as conversion tasks like YAML$\rightarrow$XML, CSV$\rightarrow$YAML, Matplotlib$\rightarrow$TikZ, and Markdown$\rightarrow$Angular (see in ~\autoref{appendix:subtask_perf}). Both closed-source and open-source models achieve low scores on these tasks, which typically require complex structural or visual reasoning. Notably, the performance gap between closed-source and open-source models is even wider on these challenging subtasks, suggesting that proprietary models may have advantages in handling more complex structural representations and transformation logic.

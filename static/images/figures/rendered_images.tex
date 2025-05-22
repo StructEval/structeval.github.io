@@ -1,0 +1,61 @@
+\begin{figure*}[!h]
+  \centering
+  \captionsetup[subfigure]{justification=centering}
+
+  \newlength{\imgH}\setlength{\imgH}{3.6cm}  % uniform height
+
+  % ---------- first row ----------
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \fcolorbox{imgborder}{white}{%
+      \includegraphics[height=\imgH,keepaspectratio]{images/000107.png}}
+    \caption{Angular}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \fcolorbox{imgborder}{white}{%
+      \includegraphics[height=\imgH,keepaspectratio]{images/000829.png}}
+    \caption{Matplotlib}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \fcolorbox{imgborder}{white}{%
+      \includegraphics[height=\imgH,keepaspectratio]{images/000936.png}}
+    \caption{Mermaid}
+  \end{subfigure}
+
+  \vspace{0.6em}
+
+  % ---------- second row ----------
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \fcolorbox{imgborder}{white}{%
+      \includegraphics[height=\imgH,keepaspectratio]{images/001126.png}}
+    \caption{React}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \fcolorbox{imgborder}{white}{%
+      \includegraphics[height=\imgH,keepaspectratio]{images/001210.png}}
+    \caption{SVG}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \fcolorbox{imgborder}{white}{%
+      \includegraphics[height=\imgH,keepaspectratio]{images/001312.png}}
+    \caption{TikZ}
+  \end{subfigure}
+
+  \vspace{0.6em}
+
+  % ---------- third row ----------
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \fcolorbox{imgborder}{white}{%
+      \includegraphics[height=\imgH,keepaspectratio]{images/001509.png}}
+    \caption{Vega}
+  \end{subfigure}
+
+  \caption{Example images rendered in \structeval tasks.}
+  \label{fig:rendered_images}
+\end{figure*}

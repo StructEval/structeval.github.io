@@ -1,0 +1,91 @@
+
+\section{StructEval Dataset}
+\label{sec:structeval}
+% List the annotation pipeline
+In this section, we first present an overview of our \structeval dataset and statistical analysis in \autoref{subsec:structeval_overview}. Next, we elaborate on how we design the whole pipeline for annotation and quality review in \autoref{subsec:annotation_pipeline}. We will introduce how we design the evaluation metrics for each task in our dataset in \autoref{sec:eval_metrics}.
+
+\input{tables/dataset_stats}
+
+\subsection{Overview}
+\label{subsec:structeval_overview}
+
+As shown in~\autoref{tab:data_stats}, our \structeval dataset comprises a total of 2,035 examples, covering 44 unique structure generation tasks across 18 structured output formats. The dataset is organized into two main subsets: \emph{StructEval-T} and \emph{StructEval-V}. 
+
+\begin{itemize}
+    \item \emph{StructEval-T} is designed to evaluate an LLM’s ability to generate structured outputs directly from natural language prompts without rendering. Supported formats include JSON, XML, YAML, Markdown, CSV, TOML, among others. These are highly useful formats in many downstream applications. 
+    \item \emph{StructEval-V} assesses an LLM’s ability to generate executable code for visual rendering that fulfills a specified visual requirement. This subset includes formats such as HTML, React, Matplotlib, Canvas, LaTeX, SVG, Mermaid, and more. These are widely adopted formats for various applications. 
+\end{itemize}
+
+\input{tables/path_checker}
+
+Each example in the dataset is categorized as either \textit{generation} or \textit{conversion}. In \textit{generation} tasks, the model is required to produce structured output based on a natural language description with detailed specifications. In \textit{conversion} tasks, the model must translate structured content from one format to another (e.g., JSON to YAML, HTML to React).
+
+\input{tables/set_gen_example}
+\input{tables/sev_gen_example}
+
+Formally, each example is represented as a triplet $(q, \mathbf{K}, \mathbf{Q^v})$, where $q$ denotes the structure generation question, $\mathbf{K} = \{k_1, \dots, k_{|\mathbf{K}|}\}$ is a set of keywords expected to appear in the output, and $\mathbf{Q^v} = \{(q^v_1, a^v_1), \dots, (q^v_{|\mathbf{Q^v}|}, a^v_{|\mathbf{Q^v}|})\}$ is a set of visual question-answer (VQA) pairs used for evaluating examples in the \emph{StructEval-V} subset. In contrast, for \emph{StructEval-T}, $\mathbf{Q^v}$ is empty and not used during evaluation. To ensure comprehensive evaluation, each example in the dataset contains on average 14.7 keywords and 8.5 VQA pairs, as detailed in~\autoref{tab:data_stats}.
+
+
+The dataset encompasses a wide spectrum of structured output formats, ranging from widely-used data serialization types like JSON and YAML to visually-renderable formats such as SVG, Mermaid, and TikZ. This diverse format coverage enables a more holistic evaluation of LLMs’ capabilities in both structured data modeling and visual code generation. Notably, the inclusion of niche yet expressive formats—such as Typst for typesetting, Mermaid for diagram specification, and TikZ for LaTeX-based graphics—broadens the evaluative scope beyond conventional tasks. These formats collectively span domains including web front-end development, data exchange, scientific visualization, and technical documentation. The distribution of tasks across these formats is shown in ~\autoref{tab:task_dist}, highlighting the balanced composition of generation and conversion tasks across both textual and visual modalities.
+
+
+
+
+
+\subsection{Annotation Pipeline}
+\label{subsec:annotation_pipeline}
+
+To construct a high-quality and diverse benchmark, we design a multi-stage annotation pipeline consisting of three key components: 1) task curation, 2) LLM-based synthesis, and 3) expert review. This pipeline ensures both the scalability and accuracy of the \structeval dataset.
+
+\paragraph{Task Prompt}  
+We begin by identifying a broad spectrum of structure generation and conversion tasks that span both text-based and executable visual formats. These tasks are selected to reflect practical use cases and diverse real-world scenarios, covering 18 target formats and 44 distinct task types (also shown in ~\autoref{tab:task_dist}. Each task specification includes format constraints, input-output expectations, and, where applicable, conversion rules. Please refer to \autoref{appendix:task_prompt} for a sample task prompt. 
+
+
+\paragraph{Query/Metric Generation}  
+Given the high cost of fully manual annotation, we leverage a large language model to synthesize an initial pool of candidate examples. Each example consists of a task query and a set of associated evaluation metrics, including keywords for text outputs and visual question-answer (VQA) pairs for visual outputs. This step allows us to rapidly generate a large and varied collection of plausible instances that serve as drafts for human refinement.
+
+\paragraph{Expert Review}  
+To ensure quality and correctness, we employ a two-pass human review process. Annotators first validate and refine the generated task queries and associated metrics. They are allowed to freely modify, add, or remove any part of the synthesized content to ensure task clarity, completeness, and evaluability. In the second pass, a separate reviewer verifies the consistency and correctness of each example. All annotation is conducted using \texttt{LabelStudio}~\citep{labelstudio}, an open-source collaborative annotation tool designed for structured data. The final dataset contains 2035 curated examples, carefully reviewed to support robust evaluation across both \emph{StructEval-T} and \emph{StructEval-V} settings.
+
+
+
+\section{StructEval Evaluation}
+\label{sec:eval_metrics}
+
+Before the evaluation, we feed the LLM with the questions $q$ in the datasets with the corresponding prompt template defined in \autoref{tab:prompt_template}. We require the LLM to output the desired structured outputs between "\texttt{<|BEGIN\_CODE|>}" and "\texttt{<|END\_CODE|>}" so we can correctly parse the structured outputs for evaluation. For the \emph{StructEval-V}, parsed outputs will be additionally sent to our rendering engines to acquire the rendered visual outputs (see examples in ~\autoref{appendix:rendered_images}). 
+We then evaluate model outputs using an automatic evaluation pipeline that captures both structural correctness and semantic fidelity. 
+Specifically, we have designed core metrics depending on the task format: \textbf{1)} Syntax Score, \textbf{2)} Keyword Matching Score, and \textbf{3)} Visual Question Answering (VQA) Score.
+
+\input{tables/inference_prompt_template}
+
+
+\paragraph{Syntax Score.}
+The Syntax Score verifies the structural correctness of the generated output. For text-based formats such as JSON, YAML, and CSV, this involves parsing the output using a format-specific Python parser. For executable visual formats like HTML, LaTeX, or SVG, the code is rendered using a headless renderer to determine whether it executes successfully. A score of 1 is assigned if the output is syntactically valid or successfully rendered; otherwise, the score is 0. See the \autoref{appendix:rendered_images} for some correctly rendered images, code produced by the tested LLMs. 
+
+\paragraph{Keyword Matching Score}
+This metric evaluates whether the generated output contains the required structural elements. Given the reference set of expected keywords $\mathbf{K} = \{k_1, \dots, k_{|\mathbf{K}|}\}$ for a given task, we assess their presence using exact matching or regular expression rules. 
+
+For the tasks of \emph{StructEval-T} such as JSON or XML, keyword matching is performed over field names and values using dot-path references to account for nested hierarchies. The score is computed as the proportion of expected keywords correctly matched in the model’s output. Our evaluation supports a variety of path formats as shown in \autoref{tab:path_checker}. The way dot-path rules are created differs depending on the task type. 
+
+For \textit{generation} tasks, each task prompt includes feature requirements stated in natural language. These requirements define target keys and their relationships to one another (e.g., nesting depth, list membership). Annotators translate each requirement into a concrete dot-path rule using the syntax rules shown in ~\autoref{tab:path_checker}. For \textit{conversion} tasks, the input is itself a structured format (e.g., YAML or XML). We use an LLM to parse the structural schema of the input—identifying key names, nesting levels, and list structures—and convert them into target dot-path rules that the generated output must preserve.
+
+This approach ensures that models are not only producing syntactically valid outputs, but also preserving the expected structural relationships. 
+
+For the tasks of \emph{StructEval-V} such as HTML, and Matplotlib, we simply detect whether the annotated keyword is in the structured outputs and give scores accordingly.
+
+\input{tables/vqa_prompt_template}
+
+\paragraph{VQA Score}
+This score is used exclusively for tasks in the \emph{StructEval-V} subset, where the output is expected to be visually rendered. After rendering the output, GPT-4.1-mini~\citep{Hurst2024GPT4oSC}, a vision-language model (VLM), is employed to answer a set of visual questions $\mathbf{Q^v} = \{(q^v_1, a^v_1), \dots, (q^v_{|\mathbf{Q^v}|}, a^v_{|\mathbf{Q^v}|})\}$. The VLM will be given both the questions and answers and required to decide whether the VQA pair matches this rendered image. The VQA score is computed as the proportion of correctly answered questions.
+
+Final task scores are calculated as weighted combinations of these metrics, with weights adjusted based on whether the task is renderable. Let $s_s, s_k, s_v \in [0, 1]$ denotes the syntax, keyword matching, and VQA score respectively. The for \emph{StructEval-T} task, the final score $s$ is computed as:
+\begin{equation}
+s = 0.2 \cdot s_s + 0.8 \cdot s_k
+\end{equation}
+For \emph{StructEval-V}, the final score $s$ in computed as:
+\begin{equation}
+    s = 0.2 \cdot s_s + 0.1 \cdot s_k + 0.7 \cdot s_v
+\end{equation}
+This evaluation framework provides a unified, fine-grained view of model performance across both structured data generation and visual code synthesis tasks, supporting deeper insights into LLM capabilities across modalities.
+
+

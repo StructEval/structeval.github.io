@@ -1,0 +1,69 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[!ht]
+\centering
+\resizebox{0.45\textwidth}{!}{
+\begin{tabular}{ccc}
+\toprule
+\textbf{Subset} & \textbf{Tasks} & \textbf{\# Examples} \\
+\midrule
+\multicolumn{3}{c}{\textbf{Generation}} \\
+\midrule
+\multirow{5}{*}{StructEval-T} & Text $\rightarrow$ JSON & 50 \\
+ & Text $\rightarrow$ CSV & 50 \\
+ & Text $\rightarrow$ TOML & 50 \\
+ & Text $\rightarrow$ XML & 50 \\
+ & Text $\rightarrow$ YAML & 50 \\
+\noalign{\vskip 2pt}
+\midrule
+\noalign{\vskip 2pt}
+\multirow{13}{*}{StructEval-V} & Text $\rightarrow$ Angular & 50 \\
+ & Text $\rightarrow$ Canvas & 50 \\
+ & Text $\rightarrow$ HTML & 50 \\
+ & Text $\rightarrow$ LaTeX & 50 \\
+ & Text $\rightarrow$ Markdown & 50 \\
+ & Text $\rightarrow$ Matplotlib & 50 \\
+ & Text $\rightarrow$ Mermaid & 50 \\
+ & Text $\rightarrow$ React & 50 \\
+ & Text $\rightarrow$ SVG & 50 \\
+ & Text $\rightarrow$ TikZ & 50 \\
+ & Text $\rightarrow$ Typst & 50 \\
+ & Text $\rightarrow$ Vega & 50 \\
+ & Text $\rightarrow$ Vue & 50 \\
+\midrule
+\multicolumn{3}{c}{\textbf{Conversion}} \\
+\midrule
+\multirow{14}{*}{StructEval-T} & CSV $\rightarrow$ JSON & 50 \\
+ & JSON $\rightarrow$ CSV & 50 \\
+ & XML $\rightarrow$ JSON & 50 \\
+ & JSON $\rightarrow$ XML & 50 \\
+ & YAML $\rightarrow$ JSON & 50 \\
+ & JSON $\rightarrow$ YAML & 50 \\
+ & XML $\rightarrow$ CSV & 50 \\
+ & CSV $\rightarrow$ XML & 50 \\
+ & XML $\rightarrow$ YAML & 50 \\
+ & YAML $\rightarrow$ XML & 50 \\
+ & YAML $\rightarrow$ CSV & 50 \\
+ & TOML $\rightarrow$ JSON & 50 \\
+ & CSV $\rightarrow$ YAML & 50 \\
+ & TOML $\rightarrow$ YAML & 50 \\
+\noalign{\vskip 2pt}
+\midrule
+\noalign{\vskip 2pt}
+\multirow{12}{*}{StructEval-V} & Matplotlib $\rightarrow$ TikZ & 100 \\
+ & Markdown $\rightarrow$ HTML & 50 \\
+ & HTML $\rightarrow$ React & 45 \\
+ & React $\rightarrow$ HTML & 45 \\
+ & Vue $\rightarrow$ HTML & 40 \\
+ & HTML $\rightarrow$ Vue & 40 \\
+ & Markdown $\rightarrow$ React & 30 \\
+ & HTML $\rightarrow$ Angular & 30 \\
+ & Markdown $\rightarrow$ Vue & 25 \\
+ & Vue $\rightarrow$ React & 15 \\
+ & Markdown $\rightarrow$ Angular & 10 \\
+ & React $\rightarrow$ Angular & 5 \\
+ \bottomrule
+\end{tabular}}
+\caption{Statistics of number examples for each task in all the 4 subsets of \structeval.}
+\label{tab:task_dist}
+\end{table}
