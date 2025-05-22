@@ -73,11 +73,11 @@
           <div class="columns is-centered">
             <div class="column has-text-centered">
               <h1 class="title is-1 publication-title is-bold">
-                <img src="static/images/mmmu_icon2.png" style="width:1em;vertical-align: middle" alt="Logo"/>
-                <span class="mmmu" style="vertical-align: middle">MMMU</span>
+                <img src="static/images/structeval_icon.png" style="width:1em;vertical-align: middle" alt="Logo"/>
+                <span class="structeval" style="vertical-align: middle">StructEval</span>
               </h1>
               <h2 class="subtitle is-3 publication-subtitle">
-                A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI
+                Benchmarking LLMs for Structured Output Generation & Conversion
               </h2>
               <div class="is-size-5 publication-authors">
                 <span class="author-block">
@@ -122,7 +122,7 @@
               <br>
 
               <div class="is-size-5 publication-authors">
-                <span class="author-block"><b>MMMU Team</b></span>
+                <span class="author-block"><b>StructEval Team</b></span>
               </div>
 
               <br>
@@ -206,120 +206,88 @@
 
     <section class="hero teaser">
       <div class="container is-max-desktop has-text-centered">
-        <img src="static/images/overview_mmlu.Jpeg" alt="geometric reasoning">
-        <p>Overview of the MMMU dataset. MMMU presents four challenges:
-          1) <b>comprehensiveness</b>: 11.5K college-level problems across six broad disciplines and 30 college subjects;
-          2) highly <b>heterogeneous</b> image types;
-          3) <b>interleaved</b> text and images;
-          4) <b>expert-level</b> perception and reasoning rooted in deep subject knowledge.
+        <img src="static/images/structeval_overview.png" alt="StructEval Overview">
+        <p>StructEval presents four key features:
+          1) <b>Formats</b>: 18 structured formats (e.g., JSON, HTML, SVG, React, CSV, YAML…);
+          2) <b>Task Types</b>: 44 tasks across generation and conversion paradigms;
+          3) <b>Evaluation</b>: Syntax, keyword match, visual QA;
+          4) <b>Example Count</b>: 2,035 high-quality examples.
         </p>
       </div>
     </section>
 
     <section class="section">
       <div class="container" style="margin-bottom: 2vh;">
-        <!-- Abstract. -->
+        <!-- News Section -->
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
-            <h2 class="title is-3">🔔News</h2>
+            <h2 class="title is-3">🛎️ News</h2>
             <div class="content has-text-justified">
               <p>
-                <b>🔥[2024-09-05] Introducing <a href="https://arxiv.org/abs/2409.02813">MMMU-Pro</a>, a robust version of MMMU benchmark for multimodal AI evaluation! 🚀</b>
+                <b>🛎️[2025-05-22]: StructEval v1.0 released with 2,035 examples across 44 tasks.</b>
               </p>
               <p>
-                <b>🚀[2024-01-31]: We added Human Expert performance on the <a href="#leaderboard">Leaderboard</a>!🌟</b>
+                <b>🛎️[2025-06-15 (planned)]: Evaluation server will go online.</b>
               </p>
               <p>
-                <b>🔥[2023-12-04]: Our evaluation server for the test set is now available on <a href="https://eval.ai/web/challenges/challenge-page/2179/overview"><b>EvalAI</b></a>. We welcome all submissions and look forward to your participation! 😆</b>
+                <b>🛎️[2025-07 (planned)]: First leaderboard snapshot to be published.</b>
               </p>
           </div>
             <h2 class="title is-3">Introduction</h2>
             <div class="content has-text-justified">
               <p>
-                We introduce MMMU: a new benchmark designed to evaluate multimodal models on massive multi-discipline tasks demanding college-level subject knowledge and deliberate reasoning. MMMU includes <b>11.5K</b> meticulously collected multimodal questions from college exams, quizzes, and textbooks, covering six core disciplines: Art & Design, Business, Science, Health & Medicine, Humanities & Social Science, and Tech & Engineering. These questions span <b>30</b> subjects and <b>183</b> subfields, comprising 30 highly heterogeneous image types, such as charts, diagrams, maps, tables, music sheets, and chemical structures. Unlike existing benchmarks, MMMU focuses on advanced perception and reasoning with domain-specific knowledge, challenging models to perform tasks akin to those faced by experts. Our evaluation of 14 open-source LMMs and the proprietary GPT-4V(ision) highlights the substantial challenges posed by MMMU. Even the advanced GPT-4V only achieves a 56% accuracy, indicating significant room for improvement. We believe MMMU will stimulate the community to build next-generation multimodal foundation models towards expert artificial general intelligence.
+                We introduce StructEval, a benchmark for evaluating LLMs' abilities to produce structured outputs across a wide range of data formats and task settings. Unlike prior benchmarks that target plain text generation, StructEval focuses on tasks involving both generation of and conversion between structured data formats, such as JSON, HTML, React, LaTeX, and CSV. It covers a total of 44 tasks grouped into two primary paradigms: structured generation and structured conversion. The dataset includes 2,035 carefully validated instances, annotated with high precision and designed to test reasoning, formatting, and representation fidelity in LLM outputs.
               </p>
             </div>
           </div>
         </div>
-        <!--/ Abstract. -->
+        <!--/ News and Introduction. -->
     </div>
     </section>
 
     <!-- DATASET SECTION -->
     <section class="hero is-light is-small">
       <div class="hero-body has-text-centered">
-        <h1 class="title is-1 mmmu">
-          <img src="static/images/mmmu_icon2.png" alt="Logo" class="mmmu-logo"/>
-          <span class="mmmu">MMMU Benchmark</span>
-        </h1>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">Overview</h2>
-            <div class="content has-text-justified">
-              <p>
-                We introduce the Massive Multi-discipline Multimodal Understanding and Reasoning (MMMU) benchmark, a novel benchmark meticulously curated to assess the expert-level multimodal understanding capability of foundation models across a broad scope of tasks. Covering subjects across disciplines, including Art, Business, Health & Medicine, Science, Humanities & Social Science, and Tech & Engineering, and over subfields. The detailed subject coverage and statistics are detailed in the figure. The questions in our benchmark were manually collected by a team of college students (including coauthors) from various disciplines and subjects, drawing from online sources, textbooks, and lecture materials.
-              </p>
-              <img src="static/images/mmlu_example.Jpeg" alt="algebraic reasoning" class="center">
-              <br>
-              <p>
-                 MMMU is designed to measure three essential skills in LMMs: perception, knowledge, and reasoning. Our aim is to evaluate how well these models can not only perceive and understand information across different modalities but also apply reasoning with subject-specific knowledge to derive the solution.
-              </p>
-              <p>
-                Our MMMU benchmark introduces key challenges to multimodal foundation models, as detailed in a figure. Among these, we particularly highlight the challenge stemming from the requirement for both expert-level visual perceptual abilities and deliberate reasoning with subject-specific knowledge. This challenge is vividly illustrated through our tasks, which not only demand the processing of various heterogeneous image types but also necessitate a model's adeptness in using domain-specific knowledge to deeply understand both the text and images and to reason. This goes significantly beyond basic visual perception, calling for an advanced approach that integrates advanced multimodal analysis with domain-specific knowledge.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">Comparisons with Existing Benchmarks</h2>
-            <div class="content has-text-justified">
-              <p>
-                To further distinguish the difference between <i>dataset</i> and other existing ones, we elaborate the benchmark details in Figure.
-                From the <i>breadth</i> perspective, the prior benchmarks are heavily focused on daily knowledge and common sense.
-                The covered image format is also limited. Our benchmark aims to cover college-level knowledge with 30 image formats including diagrams,
-                tables, charts, chemical structures, photos, paintings, geometric shapes, music sheets, medical images, etc.
-                In the <i>depth</i> aspect, the previous benchmarks normally require commonsense knowledge or simple physical or temporal reasoning.
-                In contrast, our benchmark requires deliberate reasoning with college-level subject knowledge.
-              </p>
-              <div class="content has-text-centered">
-                <img src="static/images/compare.Jpeg" alt="algebraic reasoning" class="center">
-                <p> Sampled MMMU examples from each discipline. The questions and images need expert-level knowledge to understand and reason.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">Statistics</h2>
-            <div class="carousel results-carousel">
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/mmmu_subject_distribution.Jpeg" alt="algebraic reasoning" width="95%"/>
-                  <p> Sampled MMMU examples from each discipline. The questions and images need expert-level knowledge to understand and reason.</p>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/statistics.png" alt="arithmetic reasoning" width="40%"/>
-                  <p> Key statistics of the MMMU benchmark</p>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/image_type_count.png" alt="arithmetic reasoning" width="80%"/>
-                  <p> Distribution of image types in the MMMU dataset</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <h2 class="title is-3">Dataset & Task Coverage</h2>
+        <div class="content has-text-justified">
+          <table class="table is-fullwidth">
+            <thead>
+              <tr>
+                <th>Subset</th>
+                <th>Task Types</th>
+                <th>Formats</th>
+                <th>Examples</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>StructEval-T</td>
+                <td>19</td>
+                <td>JSON, YAML, TOML…</td>
+                <td>950</td>
+              </tr>
+              <tr>
+                <td>StructEval-V</td>
+                <td>25</td>
+                <td>HTML, React, SVG…</td>
+                <td>1,085</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>44</td>
+                <td>18 structured types</td>
+                <td>2,035</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Notes:
+            <ul>
+              <li>Text-based formats include JSON, YAML, TOML, LaTeX, etc.</li>
+              <li>Renderable formats include HTML, Markdown, React, SVG, etc.</li>
+              <li>Tasks span input-output transformation, generation from intent, and structured editing.</li>
+            </ul>
+          </p>
         </div>
       </div>
     </section>
@@ -343,7 +311,7 @@
                 In each type, we consider both closed- and open-source models.
                 Our evaluation is conducted under a zero-shot setting to assess the capability of models to generate accurate answers without fine-tuning or few-shot demonstrations on our benchmark.
                 For all models, we use the default prompt provided by each model for multi-choice or open QA, if available.
-                If models do not provide prompts for task types in MMMU, we conduct prompt engineering on the validation set and use the most effective prompt for the later zero-shot experiment.
+                If models do not provide prompts for task types in StructEval, we conduct prompt engineering on the validation set and use the most effective prompt for the later zero-shot experiment.
               </p>
             </div>
             <br>
@@ -355,18 +323,18 @@
             <br>
             <div class="content has-text-centered">
               <p>
-                Click on MMMU-Pro, MMMU (Val) or MMMU (Test) to expand detailed results.
+                Click on StructEval-Pro, StructEval (Val) or StructEval (Test) to expand detailed results.
               </p>
             </div>
             <div class="leaderboard-container">
               <div class="table-wrapper">
-                <table id="mmmu-table">
+                <table id="structeval-table">
                   <thead>
                     <tr>
                       <th colspan="3" class="reset-cell clickable" style="text-align: center;">Reset</th>
-                      <th class="pro-details-cell clickable" colspan="1">MMMU-Pro</th>
-                      <th class="val-details-cell clickable" colspan="1">MMMU(Val)</th>
-                      <th class="test-details-cell clickable" colspan="1">MMMU(Test)</th>
+                      <th class="pro-details-cell clickable" colspan="1">StructEval-Pro</th>
+                      <th class="val-details-cell clickable" colspan="1">StructEval(Val)</th>
+                      <th class="test-details-cell clickable" colspan="1">StructEval(Test)</th>
                     </tr>
                     <tr>
                       <th class="sortable clickable" data-sort="string">Name</th>
@@ -395,7 +363,7 @@
                     <!-- Table body will be populated dynamically -->
                   </tbody>
                 </table>
-                <p class="test-desc"> Overall results of different models on the MMMU leaderboard. The best-performing model in each category is <b>in-bold</b>, and the second best is <u>underlined</u>. *: results provided by the authors.</p>
+                <p class="test-desc"> Overall results of different models on the StructEval leaderboard. The best-performing model in each category is <b>in-bold</b>, and the second best is <u>underlined</u>. *: results provided by the authors.</p>
               </div>
             </div>
           </div>
@@ -589,9 +557,9 @@
             <div class="content has-text-justified">
               <p>
                 we compares the performance of selected models across three difficulty levels.
-                GPT-4V demonstrates a significantly higher proficiency, with a success rate of 76.1%, compared to opensource models in the “Easy” category.
-                When it comes to the “Medium” category, while the gap narrows, GPT-4V still leads at 55.6%.
-                The further diminishing performance gap in the “Hard” category across models indicates that as the complexity of tasks increases, the advantage of more advanced models like GPT-4V almost disappears.
+                GPT-4V demonstrates a significantly higher proficiency, with a success rate of 76.1%, compared to opensource models in the "Easy" category.
+                When it comes to the "Medium" category, while the gap narrows, GPT-4V still leads at 55.6%.
+                The further diminishing performance gap in the "Hard" category across models indicates that as the complexity of tasks increases, the advantage of more advanced models like GPT-4V almost disappears.
                 This might reflect a current limitation in handling expert-level challenging queries even for the most advanced models.
               </p>
             </div>
@@ -829,66 +797,6 @@
               <div class="box m-5">
                 <div class="content has-text-centered">
                   <img src="static/images/error/38.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/39.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/40.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/41.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/42.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/43.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/44.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/45.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/46.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/47.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/48.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/49.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/50.png" alt="grade-lv" width="60%"/>
                 </div>
               </div>
             </div>
