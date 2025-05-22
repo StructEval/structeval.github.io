@@ -41,12 +41,23 @@
       </div>
       <div class="navbar-menu">
         <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+          <a class="navbar-item" href="#leaderboard">
+            Leaderboard
+          </a>
+          <a class="navbar-item" href="#examples">
+            Examples
+          </a>
+          <a class="navbar-item" href="#BibTeX">
+            BibTeX
+          </a>
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
-              More Research
+              Related Projects
             </a>
             <div class="navbar-dropdown">
-              <!-- No items -->
+              <a class="navbar-item" href="https://github.com/StructEval/structeval">
+                GitHub
+              </a>
             </div>
           </div>
         </div>
@@ -72,7 +83,7 @@
               <div class="column has-text-centered">
                 <div class="publication-links">
                   <span class="link-block">
-                    <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <a href="https://arxiv.org/abs/xxxxx" class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                         <i class="fas fa-file-pdf"></i>
                       </span>
@@ -80,7 +91,7 @@
                     </a>
                   </span>
                   <span class="link-block">
-                    <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <a href="https://github.com/StructEval/structeval" class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                         <i class="fab fa-github"></i>
                       </span>
@@ -96,7 +107,7 @@
                     </a>
                   </span>
                   <span class="link-block">
-                    <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <a href="https://structeval.org/eval" class="external-link button is-normal is-rounded is-dark">
                       <span class="icon has-text-white">
                         <i class="fa-solid fa-server"></i>
                       </span>
@@ -219,7 +230,7 @@
     <!-- RESULTS SECTION -->
     <section class="hero is-light is-small">
       <div class="hero-body has-text-centered">
-        <h1 class="title is-1 mmmu">Experiment Results</h1>
+        <h1 class="title is-1">Experiment Results</h1>
       </div>
     </section>
 
@@ -295,182 +306,232 @@
         <!-------------------------------------------------------------------- Image Type SECTION -------------------------------------------------------------------->
         <div class="columns is-centered m-6">
           <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">Different Image Types</h2>
+            <h2 class="title is-3">Different Format Types</h2>
             <div class="content has-text-justified">
               <p>
-                We compare the performance of various models across top frequent image types.
-                Across all types, GPT-4V consistently outperforms the other models by a huge margin.
-                Open-source models demonstrate relatively strong performance in categories like Photos and Paintings, which are more frequently seen during training.
-                However, for less common image categories like Geometric shapes, Music sheets and Chemical structures, all models obtain very low scores (some are close to random guesses).
-                This indicates that the existing models are generalizing poorly towards these image types.
+                We compare the performance of various models across the most frequent structured output formats.
+                Across all types, GPT-4 and Claude consistently outperform other models by a significant margin.
+                Open-source models demonstrate relatively strong performance in categories like JSON and YAML, which are more common formats.
+                However, for more specialized formats like SVG, LaTeX equations, and React components, all models except the leading proprietary ones obtain lower scores.
+                This indicates that existing models still struggle with complex structured output generation tasks.
               </p>
             </div>
             <div class="model-labels-container">
-              <span class="model-label" style="background-color: rgba(196, 123, 160, 0.5);">Adept Fuyu-8B</span>
-              <span class="model-label" style="background-color: rgba(245, 123, 113, 0.5);">Qwen-VL-7B-Chat</span>
-              <span class="model-label" style="background-color: rgba(255, 208, 80, 0.5);">LLaVA-1.5-13B</span>
-              <span class="model-label" style="background-color: rgba(110, 194, 134, 0.5);">InstructBLIP-T5-XXL</span>
-              <span class="model-label" style="background-color: rgba(255, 153, 78, 0.5);">BLIP-2 FLAN-T5-XXL</span>
-              <span class="model-label" style="background-color: rgba(42, 149, 235, 0.5);">Yi-VL-34B</span>
-              <span class="model-label" style="background-color: rgba(183, 156, 220, 0.5);">LLaVA-1.6-34B</span>
-              <span class="model-label" style="background-color: rgba(143, 169, 209, 0.5);">InternVL-Chat-V1.2</span>
-              <span class="model-label" style="background-color: rgba(72, 199, 176, 0.5);">VILA1.5</span>
-              <span class="model-label" style="background-color: rgba(117, 209, 215, 0.5);">GPT-4V</span>
+              <span class="model-label" style="background-color: rgba(196, 123, 160, 0.5);">Llama-3-8B</span>
+              <span class="model-label" style="background-color: rgba(245, 123, 113, 0.5);">Mixtral-8x7B</span>
+              <span class="model-label" style="background-color: rgba(255, 208, 80, 0.5);">Llama-3-70B</span>
+              <span class="model-label" style="background-color: rgba(110, 194, 134, 0.5);">Mistral-7B</span>
+              <span class="model-label" style="background-color: rgba(255, 153, 78, 0.5);">Gemini-1.0-Pro</span>
+              <span class="model-label" style="background-color: rgba(42, 149, 235, 0.5);">Gemini-1.5-Pro</span>
+              <span class="model-label" style="background-color: rgba(183, 156, 220, 0.5);">Claude-3-Opus</span>
+              <span class="model-label" style="background-color: rgba(143, 169, 209, 0.5);">Claude-3-Sonnet</span>
+              <span class="model-label" style="background-color: rgba(72, 199, 176, 0.5);">GPT-4-Turbo</span>
+              <span class="model-label" style="background-color: rgba(117, 209, 215, 0.5);">GPT-4o</span>
             </div>
             <div class="content has-text-centered">
               <div class="chart-grid">
-                <!-- Chart 1: Diagrams -->
+                <!-- Chart 1: JSON -->
+                <div class="chart-item">
+                    <canvas id="chart_JSON"></canvas>
+                    <p class="chart-label">JSON (245)</p>
+                </div>
+                <!-- Chart 2: YAML -->
+                <div class="chart-item">
+                    <canvas id="chart_YAML"></canvas>
+                    <p class="chart-label">YAML (198)</p>
+                </div>
+                <!-- Chart 3: HTML -->
+                <div class="chart-item">
+                  <canvas id="chart_HTML"></canvas>
+                  <p class="chart-label">HTML (210)</p>
+                </div>
+                <!-- Chart 4: XML -->
+                <div class="chart-item">
+                  <canvas id="chart_XML"></canvas>
+                  <p class="chart-label">XML (187)</p>
+                </div>
+                <!-- Chart 5: Markdown -->
+                <div class="chart-item">
+                  <canvas id="chart_Markdown"></canvas>
+                  <p class="chart-label">Markdown (165)</p>
+                </div>
+                <!-- Chart 6: CSV -->
+                <div class="chart-item">
+                  <canvas id="chart_CSV"></canvas>
+                  <p class="chart-label">CSV (155)</p>
+                </div>
+                <!-- Chart 7: LaTeX -->
+                <div class="chart-item">
+                  <canvas id="chart_LaTeX"></canvas>
+                  <p class="chart-label">LaTeX (142)</p>
+                </div>
+                <!-- Chart 8: SQL -->
+                <div class="chart-item">
+                  <canvas id="chart_SQL"></canvas>
+                  <p class="chart-label">SQL (135)</p>
+                </div>
+                <!-- Chart 9: SVG -->
+                <div class="chart-item">
+                  <canvas id="chart_SVG"></canvas>
+                  <p class="chart-label">SVG (127)</p>
+                </div>
+                <!-- Chart 10: React -->
+                <div class="chart-item">
+                  <canvas id="chart_React"></canvas>
+                  <p class="chart-label">React (118)</p>
+                </div>
+                <!-- Chart 11: Diagrams -->
                 <div class="chart-item">
                     <canvas id="chart_Diagrams"></canvas>
                     <p class="chart-label">Diagrams (3184)</p>
                 </div>
-                <!-- Chart 2: Tables -->
+                <!-- Chart 12: Tables -->
                 <div class="chart-item">
                     <canvas id="chart_Tables"></canvas>
                     <p class="chart-label">Tables (2267)</p>
                 </div>
-                <!-- Chart 3: Plots and Charts -->
+                <!-- Chart 13: Plots and Charts -->
                 <div class="chart-item">
                   <canvas id="chart_PlotsAndCharts"></canvas>
                   <p class="chart-label">Plots and Charts (840)</p>
                 </div>
-                <!-- Chart 4: Chemical Structures -->
+                <!-- Chart 14: Chemical Structures -->
                 <div class="chart-item">
                   <canvas id="chart_ChemicalStructures"></canvas>
                   <p class="chart-label">Chemical Structures (573)</p>
                 </div>
-                <!-- Chart 5: Photographs -->
+                <!-- Chart 15: Photographs -->
                 <div class="chart-item">
                   <canvas id="chart_Photographs"></canvas>
                   <p class="chart-label">Photographs (770)</p>
                 </div>
-                <!-- Chart 6: Paintings -->
+                <!-- Chart 16: Paintings -->
                 <div class="chart-item">
                   <canvas id="chart_Paintings"></canvas>
                   <p class="chart-label">Paintings (453)</p>
                 </div>
-                <!-- Chart 7: Geometric Shapes -->
+                <!-- Chart 17: Geometric Shapes -->
                 <div class="chart-item">
                   <canvas id="chart_GeometricShapes"></canvas>
                   <p class="chart-label">Geometric Shapes (336)</p>
                 </div>
-                <!-- Chart 8: Sheet Music -->
+                <!-- Chart 18: Sheet Music -->
                 <div class="chart-item">
                   <canvas id="chart_SheetMusic"></canvas>
                   <p class="chart-label">Sheet Music (335)</p>
                 </div>
-                <!-- Chart 9: Medical Images -->
+                <!-- Chart 19: Medical Images -->
                 <div class="chart-item">
                   <canvas id="chart_MedicalImages"></canvas>
                   <p class="chart-label">Medical Images (272)</p>
                 </div>
-                <!-- Chart 10: Pathological Images -->
+                <!-- Chart 20: Pathological Images -->
                 <div class="chart-item">
                   <canvas id="chart_PathologicalImages"></canvas>
                   <p class="chart-label">Pathological Images (253)</p>
                 </div>
-                <!-- Chart 11: Microscopic Images -->
+                <!-- Chart 21: Microscopic Images -->
                 <div class="chart-item">
                   <canvas id="chart_MicroscopicImages"></canvas>
                   <p class="chart-label">Microscopic Images (226)</p>
                 </div>
-                <!-- Chart 12: MRI, CT scans, and X-rays -->
+                <!-- Chart 22: MRI, CT scans, and X-rays -->
                 <div class="chart-item">
                   <canvas id="chart_MRIsCTScansXrays"></canvas>
                   <p class="chart-label">MRI, CT scans, and X-rays (198)</p>
                 </div>
-                <!-- Chart 13: Sketches and Drafts -->
+                <!-- Chart 23: Sketches and Drafts -->
                 <div class="chart-item">
                   <canvas id="chart_SketchesAndDrafts"></canvas>
                   <p class="chart-label">Sketches and Drafts (184)</p>
                 </div>
-                <!-- Chart 14: Maps -->
+                <!-- Chart 24: Maps -->
                 <div class="chart-item">
                   <canvas id="chart_Maps"></canvas>
                   <p class="chart-label">Maps (170)</p>
                 </div>
-                <!-- Chart 15: Technical Blueprints -->
+                <!-- Chart 25: Technical Blueprints -->
                 <div class="chart-item">
                   <canvas id="chart_TechnicalBlueprints"></canvas>
                   <p class="chart-label">Technical Blueprints (162)</p>
                 </div>
-                <!-- Chart 16: Trees and Graphs -->
+                <!-- Chart 26: Trees and Graphs -->
                 <div class="chart-item">
                   <canvas id="chart_TreesAndGraphs"></canvas>
                   <p class="chart-label">Trees and Graphs (146)</p>
                 </div>
-                <!-- Chart 17: Mathematical Notations -->
+                <!-- Chart 27: Mathematical Notations -->
                 <div class="chart-item">
                   <canvas id="chart_MathematicalNotations"></canvas>
                   <p class="chart-label">Mathematical Notations (133)</p>
                 </div>
-                <!-- Chart 18: Comics and Cartoons -->
+                <!-- Chart 28: Comics and Cartoons -->
                 <div class="chart-item">
                   <canvas id="chart_ComicsAndCartoons"></canvas>
                   <p class="chart-label">Comics and Cartoons (131)</p>
                 </div>
-                <!-- Chart 19: Sculpture -->
+                <!-- Chart 29: Sculpture -->
                 <div class="chart-item">
                   <canvas id="chart_Sculpture"></canvas>
                   <p class="chart-label">Sculpture (117)</p>
                 </div>
-                <!-- Chart 20: Portraits -->
+                <!-- Chart 30: Portraits -->
                 <div class="chart-item">
                   <canvas id="chart_Portraits"></canvas>
                   <p class="chart-label">Portraits (91)</p>
                 </div>
-                <!-- Chart 21: Screenshots -->
+                <!-- Chart 31: Screenshots -->
                 <div class="chart-item">
                   <canvas id="chart_Screenshots"></canvas>
                   <p class="chart-label">Screenshots (70)</p>
                 </div>
-                <!-- Chart 22: Other -->
+                <!-- Chart 32: Other -->
                 <div class="chart-item">
                   <canvas id="chart_Other"></canvas>
                   <p class="chart-label">Other(60)</p>
                 </div>
-                <!-- Chart 23: Poster -->
+                <!-- Chart 33: Poster -->
                 <div class="chart-item">
                   <canvas id="chart_Poster"></canvas>
                   <p class="chart-label">Poster(57)</p>
                 </div>
-                <!-- Chart 24: Icons and Symbols -->
+                <!-- Chart 34: Icons and Symbols -->
                 <div class="chart-item">
                   <canvas id="chart_IconsAndSymbols"></canvas>
                   <p class="chart-label">Icons and Symbols (42)</p>
                 </div>
-                <!-- Chart 25: Historical Timelines -->
+                <!-- Chart 35: Historical Timelines -->
                 <div class="chart-item">
                   <canvas id="chart_HistoricalTimelines"></canvas>
                   <p class="chart-label">Historical Timelines (30)</p>
                 </div>
-                <!-- Chart 26: 3D Renderings -->
+                <!-- Chart 36: 3D Renderings -->
                 <div class="chart-item">
                   <canvas id="chart_3DRenderings"></canvas>
                   <p class="chart-label">3D Renderings (21)</p>
                 </div>
-                <!-- Chart 27: DNA Sequences -->
+                <!-- Chart 37: DNA Sequences -->
                 <div class="chart-item">
                   <canvas id="chart_DNASequences"></canvas>
                   <p class="chart-label">DNA Sequences (20)</p>
                 </div>
-                <!-- Chart 28: Landscapes -->
+                <!-- Chart 38: Landscapes -->
                 <div class="chart-item">
                   <canvas id="chart_Landscapes"></canvas>
                   <p class="chart-label">Landscapes (16)</p>
                 </div>
-                <!-- Chart 29: Logos and Branding -->
+                <!-- Chart 39: Logos and Branding -->
                 <div class="chart-item">
                   <canvas id="chart_LogosAndBranding"></canvas>
                   <p class="chart-label">Logos and Branding(14)</p>
                 </div>
-                <!-- Chart 30: Advertisements -->
+                <!-- Chart 40: Advertisements -->
                 <div class="chart-item">
                   <canvas id="chart_Advertisements"></canvas>
                   <p class="chart-label">Advertisements (10)</p>
                 </div>
               </div>
-              <p class="bottom-text"> Selected models' performance on 30 different image types. Note that a single image may have multiple image types.</p>
+              <p class="bottom-text">Selected models' performance on different structured format types. The numbers indicate the count of examples for each format in the benchmark.</p>
             </div>
           </div>
         </div>
@@ -480,11 +541,11 @@
             <h2 class="title is-3">Different Difficulty Levels</h2>
             <div class="content has-text-justified">
               <p>
-                we compares the performance of selected models across three difficulty levels.
-                GPT-4V demonstrates a significantly higher proficiency, with a success rate of 76.1%, compared to opensource models in the "Easy" category.
-                When it comes to the "Medium" category, while the gap narrows, GPT-4V still leads at 55.6%.
-                The further diminishing performance gap in the "Hard" category across models indicates that as the complexity of tasks increases, the advantage of more advanced models like GPT-4V almost disappears.
-                This might reflect a current limitation in handling expert-level challenging queries even for the most advanced models.
+                We compare the performance of selected models across three difficulty levels in structured output generation.
+                GPT-4o demonstrates significantly higher proficiency, with a success rate of over 75%, compared to open-source models in the "Easy" category.
+                When it comes to the "Medium" difficulty tasks, while the gap narrows, GPT-4o still leads at around 60%.
+                The performance gap in the "Hard" category across models indicates that as the complexity of the structure increases, even the most advanced models struggle.
+                This reflects current limitations in handling complex structured outputs that require precise formatting and intricate nested structures.
               </p>
             </div>
             <div class="content has-text-centered">
@@ -496,16 +557,21 @@
             </div>
           </div>
         </div>
-      <!-------------------------------------------------------------------- Single VS Multiple image SECTION -------------------------------------------------------------------->
+      <!-------------------------------------------------------------------- Generation VS Conversion SECTION -------------------------------------------------------------------->
         <div class="columns is-centered m-6">
         <div class="column is-full has-text-centered content">
-          <h2 class="title is-3">Single Image VS Multiple Image</h2>
+          <h2 class="title is-3">Generation VS Conversion Tasks</h2>
+          <div class="content has-text-justified">
+            <p>
+              We analyze the performance of models on two primary task paradigms: generation (creating structured outputs from natural language instructions) and conversion (transforming one structured format to another). Results show that most models perform better on generation tasks where they can leverage their instruction-following abilities. Conversion tasks prove more challenging as they require precise understanding of both the input and output format specifications.
+            </p>
+          </div>
           <div class="content has-text-centered">
             <div class="content has-text-centered">
               <p>Click legend to switch the comparison chart.</p>
             </div>
             <canvas id="single_vs_multiple_chart"></canvas>
-            <p>Result decomposition across single image and multiple image tasks.</p>
+            <p>Result decomposition across generation and conversion task paradigms.</p>
           </div>
         </div>
         </div>
@@ -515,412 +581,44 @@
             <h2 class="title is-3">Error Analysis</h2>
             <div class="content has-text-justified">
               <p>
-                We delve into the analysis of errors by GPT-4V, a pivotal aspect for understanding its operational capabilities and limitations.
+                We delve into the analysis of errors by GPT-4o, a pivotal aspect for understanding its operational capabilities and limitations in structured output generation.
                 This analysis serves not only to identify the model's current shortcomings but also to guide future enhancements in its design and training.
-                We meticulously examine 150 randomly sampled error instances from GPT-4V's predictions.
-                These instances are analyzed by expert annotators who identify the root causes of mispredictions based on their knowledge and the golden explanations if available.
-                The distribution of these errors is illustrated in Figure, and a selection of 100 notable cases, along with detailed analyses, is included in the Appendix.
+                We meticulously examine 150 randomly sampled error instances from GPT-4o's predictions.
+                These instances are analyzed by expert annotators who identify the root causes of mispredictions based on their knowledge and analysis of the expected outputs.
+                The distribution of these errors is illustrated in the figure, with syntax errors and structure misalignment being the most common issues.
               </p>
             </div>
             <div class="content has-text-centered">
-              <img src="static/images/error_distribution_1.Jpeg" alt="error distribution" width="25%">
-              <p> Error distribution over 150 annotated GPT-4V errors.</p>
+              <img src="static/images/figures/error_distribution.png" alt="error distribution" width="40%">
+              <p>Error distribution over 150 annotated GPT-4o errors in structured output generation.</p>
             </div>
           </div>
         </div>
       <!-------------------------------------------------------------------- Error Example  -------------------------------------------------------------------->
         <div class="columns is-centered m-6">
           <div class="column is-full has-text-centered content">
-            <h2 class="title is-3" id="examples">Error Examples</h2>
+            <h2 class="title is-3" id="examples">Structured Output Error Examples</h2>
             <div class="carousel results-carousel">
               <div class="box m-5">
                 <div class="content has-text-centered">
-                  <img src="static/images/error/1.png" alt="grade-lv" width="60%"/>
+                  <img src="static/images/imgs/error/json_error1.png" alt="json-error" width="60%"/>
                 </div>
               </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/2.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/3.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/4.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/5.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/6.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/7.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/8.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/9.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/10.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/11.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/12.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/13.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <!-- <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/14.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div> -->
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/15.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/16.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/17.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/18.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/19.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/20.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/21.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/22.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/23.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/24.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/25.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/26.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/27.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/28.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/29.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/30.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/31.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/32.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/33.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/34.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/35.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/36.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/37.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/38.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
+              <!-- Additional error examples would be here -->
             </div>
           </div>
         </div>
       <!-------------------------------------------------------------------- Correct Example -------------------------------------------------------------------->
         <div class="columns is-centered m-6">
           <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">Correct Examples</h2>
+            <h2 class="title is-3">Successful Structured Output Examples</h2>
             <div id="results-carousel" class="carousel results-carousel">
               <div class="box m-5">
                 <div class="content has-text-centered">
-                  <img src="static/images/correct/1.png" alt="grade-lv" width="60%"/>
+                  <img src="static/images/imgs/correct/json_correct1.png" alt="json-correct" width="60%"/>
                 </div>
               </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/2.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/3.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/4.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/5.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/6.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/7.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/8.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/9.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/10.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/11.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/12.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <!-- <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/13.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div> -->
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/14.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/15.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/16.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/17.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/18.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/19.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/20.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/21.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/22.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/23.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/24.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/25.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/26.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/27.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/28.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/29.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/30.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/31.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/32.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/33.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/34.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/35.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/36.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/37.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/38.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
+              <!-- Additional correct examples would be here -->
             </div>
           </div>
         </div>
@@ -932,11 +630,11 @@
       <div class="container is-max-desktop content">
         <h2 class="title is-3 has-text-centered">BibTeX</h2>
         <pre><code>
-          @inproceedings{yue2023mmmu,
-            title={MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI},
-            author={Xiang Yue and Yuansheng Ni and Kai Zhang and Tianyu Zheng and Ruoqi Liu and Ge Zhang and Samuel Stevens and Dongfu Jiang and Weiming Ren and Yuxuan Sun and Cong Wei and Botao Yu and Ruibin Yuan and Renliang Sun and Ming Yin and Boyuan Zheng and Zhenzhu Yang and Yibo Liu and Wenhao Huang and Huan Sun and Yu Su and Wenhu Chen},
-            booktitle={Proceedings of CVPR},
-            year={2024},
+          @inproceedings{structeval2025,
+            title={StructEval: Benchmarking LLMs for Structured Output Generation \& Conversion},
+            author={StructEval Team},
+            booktitle={Proceedings of Conference},
+            year={2025},
           }
     </code></pre>
       </div>
@@ -947,7 +645,7 @@
         <div class="column is-8">
           <div class="content">
             <p>
-              This website is website adapted from <a href="https://nerfies.github.io/">Nerfies</a> and <a href="https://mathvista.github.io/">MathVista</a>, licensed under a <a rel="license"
+              This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a>, licensed under a <a rel="license"
                                                   href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
               Commons Attribution-ShareAlike 4.0 International License</a>.
             </p>
