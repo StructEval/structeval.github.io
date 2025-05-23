@@ -168,7 +168,7 @@
     <!-- INTRODUCTION & OVERVIEW SECTION -->
     <section class="section">
       <div class="container is-max-desktop">
-        <h2 class="title is-3">Introduction & Motivation</h2>
+        <h2 class="title is-3 has-text-centered">Motivation</h2>
         <div class="content has-text-justified">
           <p>In recent years, there has been a significant surge in the capabilities of large language models (LLMs) in generating human-like text and performing a wide range of natural language processing tasks. State-of-the-art models like GPT-4o, OpenAI o1/o3, and Google's Gemini have achieved superior performance in knowledge QA, instruction-following, and code generation.</p>
           <p>Despite recent advances, many real-world applications require not only fluency in the content of the output but also precise control over its structure. This includes tasks where the expected output must follow specific formats such as JSON, XML, LaTeX, HTML, or code in frameworks like React or Vue. These types of structured output are essential in domains like software development, data pipelines, user interface generation, and scientific publishing, where incorrect formatting can lead to disrupted pipelines or non-functional outputs.</p>
@@ -440,85 +440,46 @@
             </div>
           </div>
         </div>
-        <!-------------------------------------------------------------------- Image Type SECTION -------------------------------------------------------------------->
+        <!-------------------------------------------------------------------- Rendered Image Types SECTION -------------------------------------------------------------------->
         <div class="columns is-centered m-6">
           <div class="column is-full has-text-centered content">
             <h2 class="title is-3">Rendered Images from different format types</h2>
             <div class="content has-text-justified">
               <p>
-                We compare the performance of various models across the most frequent structured output formats.
-                Across all types, GPT-4 and Claude consistently outperform other models by a significant margin.
-                Open-source models demonstrate relatively strong performance in categories like JSON and YAML, which are more common formats.
-                However, for more specialized formats like SVG, LaTeX equations, and React components, all models except the leading proprietary ones obtain lower scores.
-                This indicates that existing models still struggle with complex structured output generation tasks.
+                Below are examples of various structured output formats rendered by models in our benchmark. 
+                These examples showcase the diversity of data formats evaluated in StructEval, 
+                from markup languages like HTML and LaTeX to data-interchange formats like JSON and YAML. 
+                The quality and correctness of these rendered outputs contribute to the model's overall score.
               </p>
             </div>
-            <div class="model-labels-container">
-              <span class="model-label" style="background-color: rgba(196, 123, 160, 0.5);">Llama-3-8B</span>
-              <span class="model-label" style="background-color: rgba(245, 123, 113, 0.5);">Mixtral-8x7B</span>
-              <span class="model-label" style="background-color: rgba(255, 208, 80, 0.5);">Llama-3-70B</span>
-              <span class="model-label" style="background-color: rgba(110, 194, 134, 0.5);">Mistral-7B</span>
-              <span class="model-label" style="background-color: rgba(255, 153, 78, 0.5);">Gemini-1.0-Pro</span>
-              <span class="model-label" style="background-color: rgba(42, 149, 235, 0.5);">Gemini-1.5-Pro</span>
-              <span class="model-label" style="background-color: rgba(183, 156, 220, 0.5);">Claude-3-Opus</span>
-              <span class="model-label" style="background-color: rgba(143, 169, 209, 0.5);">Claude-3-Sonnet</span>
-              <span class="model-label" style="background-color: rgba(72, 199, 176, 0.5);">GPT-4-Turbo</span>
-              <span class="model-label" style="background-color: rgba(117, 209, 215, 0.5);">GPT-4o</span>
-            </div>
             <div class="content has-text-centered">
-              <div class="chart-grid">
-                <!-- Chart 1: JSON -->
-                <div class="chart-item">
-                    <canvas id="chart_JSON"></canvas>
-                    <p class="chart-label">JSON (245)</p>
+              <div class="columns is-multiline is-centered">
+                <div class="column is-one-third">
+                  <img src="static/images/imgs/000107.png" alt="Structured Output Example 1" style="width: 100%; max-width: 350px;">
+                  <p class="caption">JSON Generation Example</p>
                 </div>
-                <!-- Chart 2: YAML -->
-                <div class="chart-item">
-                    <canvas id="chart_YAML"></canvas>
-                    <p class="chart-label">YAML (198)</p>
+                <div class="column is-one-third">
+                  <img src="static/images/imgs/000829.png" alt="Structured Output Example 2" style="width: 100%; max-width: 350px;">
+                  <p class="caption">HTML Generation Example</p>
                 </div>
-                <!-- Chart 3: HTML -->
-                <div class="chart-item">
-                  <canvas id="chart_HTML"></canvas>
-                  <p class="chart-label">HTML (210)</p>
+                <div class="column is-one-third">
+                  <img src="static/images/imgs/000936.png" alt="Structured Output Example 3" style="width: 100%; max-width: 350px;">
+                  <p class="caption">React Component Example</p>
                 </div>
-                <!-- Chart 4: XML -->
-                <div class="chart-item">
-                  <canvas id="chart_XML"></canvas>
-                  <p class="chart-label">XML (187)</p>
+                <div class="column is-one-third">
+                  <img src="static/images/imgs/001126.png" alt="Structured Output Example 4" style="width: 100%; max-width: 350px;">
+                  <p class="caption">SVG Generation Example</p>
                 </div>
-                <!-- Chart 5: Markdown -->
-                <div class="chart-item">
-                  <canvas id="chart_Markdown"></canvas>
-                  <p class="chart-label">Markdown (165)</p>
+                <div class="column is-one-third">
+                  <img src="static/images/imgs/001210.png" alt="Structured Output Example 5" style="width: 100%; max-width: 350px;">
+                  <p class="caption">LaTeX Equation Example</p>
                 </div>
-                <!-- Chart 6: CSV -->
-                <div class="chart-item">
-                  <canvas id="chart_CSV"></canvas>
-                  <p class="chart-label">CSV (155)</p>
-                </div>
-                <!-- Chart 7: LaTeX -->
-                <div class="chart-item">
-                  <canvas id="chart_LaTeX"></canvas>
-                  <p class="chart-label">LaTeX (142)</p>
-                </div>
-                <!-- Chart 8: SQL -->
-                <div class="chart-item">
-                  <canvas id="chart_SQL"></canvas>
-                  <p class="chart-label">SQL (135)</p>
-                </div>
-                <!-- Chart 9: SVG -->
-                <div class="chart-item">
-                  <canvas id="chart_SVG"></canvas>
-                  <p class="chart-label">SVG (127)</p>
-                </div>
-                <!-- Chart 10: React -->
-                <div class="chart-item">
-                  <canvas id="chart_React"></canvas>
-                  <p class="chart-label">React (118)</p>
+                <div class="column is-one-third">
+                  <img src="static/images/imgs/001312.png" alt="Structured Output Example 6" style="width: 100%; max-width: 350px;">
+                  <p class="caption">YAML to XML Conversion Example</p>
                 </div>
               </div>
-              <p class="bottom-text">Selected models' performance on different structured format types. The numbers indicate the count of examples for each format in the benchmark.</p>
+              <p class="bottom-text">Examples of different structured format types generated by models in our benchmark.</p>
             </div>
           </div>
         </div>
@@ -561,6 +522,23 @@
             <p>Result decomposition across generation and conversion task paradigms.</p>
           </div>
         </div>
+        </div>
+      <!-------------------------------------------------------------------- Annotation Pipeline SECTION -------------------------------------------------------------------->
+        <div class="columns is-centered m-6">
+          <div class="column is-full has-text-centered content">
+            <h2 class="title is-3">Annotation Pipeline</h2>
+            <div class="content has-text-justified">
+              <p>
+                The annotation process for StructEval follows a rigorous methodology to ensure high-quality evaluation data. 
+                Our pipeline includes validation of syntax correctness, semantic accuracy, and visual question-answer pairs for formats 
+                that produce rendered outputs. Each sample undergoes multiple expert verification steps before being included in the benchmark.
+              </p>
+            </div>
+            <div class="content has-text-centered">
+              <embed src="static/images/annotation_pipeline.pdf" type="application/pdf" width="80%" height="600px" />
+              <p>Figure: The annotation pipeline for the StructEval benchmark.</p>
+            </div>
+          </div>
         </div>
       <!-------------------------------------------------------------------- Error Analysis SECTION -------------------------------------------------------------------->
         <div class="columns is-centered m-6">
