@@ -30,64 +30,65 @@ function loadTableData() {
         })
         .then(data => {
           console.log('Data loaded successfully:', data);
-          const tbody = document.querySelector('#mmmu-table tbody');
-
-          // Prepare data for styling
-          const proScores = prepareScoresForStyling(data.leaderboardData, 'pro');
-          const valScores = prepareScoresForStyling(data.leaderboardData, 'validation');
-          const testScores = prepareScoresForStyling(data.leaderboardData, 'test');
+          const tbody = document.querySelector('#structeval-table tbody');
+          
+          // Clear existing table rows
+          tbody.innerHTML = '';
 
           data.leaderboardData.forEach((row, index) => {
             const tr = document.createElement('tr');
-            tr.classList.add(row.info.type);
-            const nameCell = row.info.link && row.info.link.trim() !== '' ?
-              `<a href="${row.info.link}" target="_blank"><b>${row.info.name}</b></a>` :
+            tr.classList.add(row.info.type || 'default');
+            
+            const nameCell = row.info.citation ? 
+              `<b>${row.info.name}</b> (${row.info.citation})` : 
               `<b>${row.info.name}</b>`;
-            const safeGet = (obj, path, defaultValue = '-') => {
-              return path.split('.').reduce((acc, part) => acc && acc[part], obj) || defaultValue;
+            
+            // Helper function to get scores safely
+            const getScore = (section, scoreType) => {
+              if (row.scores && row.scores[section] && row.scores[section][scoreType]) {
+                return row.scores[section][scoreType];
+              }
+              return '-';
             };
 
-            // Helper function to format the overall value
-            const formatOverallValue = (value, source) => {
-              // Adjust space in front of asterisk to align values
-              const adjustedValue = source === 'author' ? `&nbsp;${value || '-'}*` : `${value || '-'}`;
-              return adjustedValue;
-            };
-
-            const proOverall = formatOverallValue(applyStyle(safeGet(row, 'pro.overall'), proScores.overall[index]), safeGet(row, 'pro.source'));
-            const valOverall = formatOverallValue(applyStyle(safeGet(row, 'validation.overall'), valScores.overall[index]), safeGet(row, 'validation.source'));
-            const testOverall = formatOverallValue(applyStyle(safeGet(row, 'test.overall'), testScores.overall[index]), safeGet(row, 'test.source'));
+            // Extract scores from our new JSON structure
+            const structevalTGeneration = getScore('structevalT', 'generation');
+            const structevalTConversion = getScore('structevalT', 'conversion');
+            const structevalVGeneration = getScore('structevalV', 'generation');
+            const structevalVConversion = getScore('structevalV', 'conversion');
+            const average = row.scores?.average || '-';
 
             tr.innerHTML = `
               <td>${nameCell}</td>
-              <td>${row.info.size}</td>
-              <td>${row.info.date}</td>
-              <td class="pro-overall">${proOverall}</td>
-              <td class="hidden pro-details">${applyStyle(safeGet(row, 'pro.vision'), proScores.vision[index])}</td>
-              <td class="hidden pro-details">${applyStyle(safeGet(row, 'pro.original'), proScores.original[index])}</td>
-              <td class="val-overall">${valOverall}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.artDesign'), valScores.artDesign[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.business'), valScores.business[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.science'), valScores.science[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.healthMedicine'), valScores.healthMedicine[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.humanSocialSci'), valScores.humanSocialSci[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.techEng'), valScores.techEng[index])}</td>
-              <td class="test-overall">${testOverall}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.artDesign'), testScores.artDesign[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.business'), testScores.business[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.science'), testScores.science[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.healthMedicine'), testScores.healthMedicine[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.humanSocialSci'), testScores.humanSocialSci[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.techEng'), testScores.techEng[index])}</td>
+              <td>${row.info.size || '-'}</td>
+              <td>${row.info.date || '-'}</td>
+              <td class="pro-overall">-</td>
+              <td class="hidden pro-details">-</td>
+              <td class="hidden pro-details">-</td>
+              <td class="val-overall">${structevalTGeneration}</td>
+              <td class="hidden val-details">${structevalTConversion}</td>
+              <td class="hidden val-details">${structevalVGeneration}</td>
+              <td class="hidden val-details">${structevalVConversion}</td>
+              <td class="hidden val-details">-</td>
+              <td class="hidden val-details">-</td>
+              <td class="hidden val-details">-</td>
+              <td class="test-overall">${average}</td>
+              <td class="hidden test-details">-</td>
+              <td class="hidden test-details">-</td>
+              <td class="hidden test-details">-</td>
+              <td class="hidden test-details">-</td>
+              <td class="hidden test-details">-</td>
+              <td class="hidden test-details">-</td>
             `;
             tbody.appendChild(tr);
           });
+          
           setTimeout(adjustNameColumnWidth, 0);
           initializeSorting();
         })
         .catch(error => {
           console.error('Error loading table data:', error);
-          document.querySelector('#mmmu-table tbody').innerHTML = `
+          document.querySelector('#structeval-table tbody').innerHTML = `
             <tr>
                 <td colspan="21"> Error loading data: ${error.message}<br> Please ensure you're accessing this page through a web server (http://localhost:8000) and not directly from the file system. </td>
             </tr>
@@ -110,7 +111,7 @@ function setupEventListeners() {
     toggleDetails('test');
   });
 
-  var headers = document.querySelectorAll('#mmmu-table thead tr:last-child th.sortable');
+  var headers = document.querySelectorAll('#structeval-table thead tr:last-child th.sortable');
   headers.forEach(function(header) {
     header.addEventListener('click', function() {
       sortTable(this);
@@ -150,14 +151,14 @@ function resetTable() {
   document.querySelector('.val-details-cell').setAttribute('colspan', '1');
   document.querySelector('.test-details-cell').setAttribute('colspan', '1');
 
-  var valOverallHeader = document.querySelector('#mmmu-table thead tr:last-child th.val-overall');
+  var valOverallHeader = document.querySelector('#structeval-table thead tr:last-child th.val-overall');
   sortTable(valOverallHeader, true);
 
   setTimeout(adjustNameColumnWidth, 0);
 }
 
 function sortTable(header, forceDescending = false, maintainOrder = false) {
-  var table = document.getElementById('mmmu-table');
+  var table = document.getElementById('structeval-table');
   var tbody = table.querySelector('tbody');
   var rows = Array.from(tbody.querySelectorAll('tr'));
   var headers = Array.from(header.parentNode.children);
@@ -214,12 +215,12 @@ function getCellValue(row, index) {
 }
 
 function initializeSorting() {
-  var valOverallHeader = document.querySelector('#mmmu-table thead tr:last-child th.val-overall');
+  var valOverallHeader = document.querySelector('#structeval-table thead tr:last-child th.val-overall');
   sortTable(valOverallHeader, true);
 }
 
 function adjustNameColumnWidth() {
-  const nameColumn = document.querySelectorAll('#mmmu-table td:first-child, #mmmu-table th:first-child');
+  const nameColumn = document.querySelectorAll('#structeval-table td:first-child, #structeval-table th:first-child');
   let maxWidth = 0;
 
   const span = document.createElement('span');
