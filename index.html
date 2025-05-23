@@ -252,6 +252,141 @@
               </p>
             </div>
             <br>
+            
+            <div class="content has-text-justified">
+              <table class="table is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Models</th>
+                    <th colspan="2">StructEval-T</th>
+                    <th colspan="2">StructEval-V</th>
+                    <th>Average</th>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th>generation</th>
+                    <th>conversion</th>
+                    <th>generation</th>
+                    <th>conversion</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="6" style="background-color: #f5f5f5;"><strong>Open Source</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Llama-3.1-8B-Instruct (Grattafiori et al., 2024)</td>
+                    <td>60.22</td>
+                    <td>71.26</td>
+                    <td>54.44</td>
+                    <td>61.15</td>
+                    <td>61.77</td>
+                  </tr>
+                  <tr>
+                    <td>Meta-Llama-3-8B-Instruct (Grattafiori et al., 2024)</td>
+                    <td>49.18</td>
+                    <td>53.65</td>
+                    <td>46.61</td>
+                    <td>56.91</td>
+                    <td>51.59</td>
+                  </tr>
+                  <tr>
+                    <td>Phi-3-mini-128k-instruct (Abdin et al., 2024a)</td>
+                    <td>47.39</td>
+                    <td>29.78</td>
+                    <td>44.77</td>
+                    <td>41.23</td>
+                    <td>40.79</td>
+                  </tr>
+                  <tr>
+                    <td>Phi-4-mini-instruct (Abdin et al., 2024b)</td>
+                    <td>51.38</td>
+                    <td>72.39</td>
+                    <td>51.62</td>
+                    <td>52.48</td>
+                    <td>56.97</td>
+                  </tr>
+                  <tr>
+                    <td>Qwen2.5-7B-Instruct (Team, 2024)</td>
+                    <td>59.21</td>
+                    <td>62.18</td>
+                    <td>53.28</td>
+                    <td>61.43</td>
+                    <td>59.03</td>
+                  </tr>
+                  <tr>
+                    <td>Qwen3-4B (Yang et al., 2025)</td>
+                    <td>64.95</td>
+                    <td>81.13</td>
+                    <td>57.00</td>
+                    <td>65.08</td>
+                    <td>67.04</td>
+                  </tr>
+                  <tr>
+                    <td colspan="6" style="background-color: #f5f5f5;"><strong>Close Source</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Gemini-1.5-pro (Team et al., 2023)</td>
+                    <td>88.07</td>
+                    <td>74.24</td>
+                    <td>58.11</td>
+                    <td>66.59</td>
+                    <td>71.75</td>
+                  </tr>
+                  <tr>
+                    <td>Gemini-2.0-flash (Team et al., 2023)</td>
+                    <td>72.42</td>
+                    <td>72.20</td>
+                    <td>53.62</td>
+                    <td>51.97</td>
+                    <td>62.55</td>
+                  </tr>
+                  <tr>
+                    <td>GPT-4.1-mini (OpenAI, 2025)</td>
+                    <td>92.57</td>
+                    <td>75.63</td>
+                    <td>64.30</td>
+                    <td>70.04</td>
+                    <td>75.64</td>
+                  </tr>
+                  <tr>
+                    <td>GPT-4o (Hurst et al., 2024)</td>
+                    <td>91.52</td>
+                    <td>73.95</td>
+                    <td>65.39</td>
+                    <td>73.20</td>
+                    <td>76.02</td>
+                  </tr>
+                  <tr>
+                    <td>GPT-4o-mini (Hurst et al., 2024)</td>
+                    <td>79.86</td>
+                    <td>75.57</td>
+                    <td>60.77</td>
+                    <td>76.54</td>
+                    <td>73.19</td>
+                  </tr>
+                  <tr>
+                    <td>o1-mini (Contributors et al., 2024)</td>
+                    <td>88.12</td>
+                    <td>81.82</td>
+                    <td>61.98</td>
+                    <td>70.40</td>
+                    <td>75.58</td>
+                  </tr>
+                  <tr>
+                    <td>Δ (o1-mini - Qwen3-4B)</td>
+                    <td>23.17</td>
+                    <td>0.70</td>
+                    <td>4.99</td>
+                    <td>5.32</td>
+                    <td>8.54</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="has-text-centered">Table 4: Main evaluation results of StructEval</p>
+            </div>
+            
             <div class="model-labels-container">
               <span class="leaderboard-label human_expert">Human Expert</span>
               <span class="leaderboard-label open_source">Open-Source</span>
