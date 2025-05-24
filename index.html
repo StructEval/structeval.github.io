@@ -1,623 +1,758 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>StructEval</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://kit.fontawesome.com/f8ddf9854a.js" crossorigin="anonymous"></script>
-    <meta charset="utf-8">
-    <meta name="description"
-          content="Benchmarking LLMs' Capabilities to Generate Structural Outputs">
-    <meta name="keywords" content="StructEval, LMM, LMM Evaluation, Vision Language Model, Large Language Model, Large Multimodal Model, artificial intelligence, AI, AGI, artificial general intelligence">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs</title>
+	<head>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script
+			src="https://kit.fontawesome.com/f8ddf9854a.js"
+			crossorigin="anonymous"
+		></script>
+		<meta charset="utf-8" />
+		<meta
+			name="description"
+			content="Benchmarking LLMs' Capabilities to Generate Structural Outputs"
+		/>
+		<meta
+			name="keywords"
+			content="StructEval, LMM, LMM Evaluation, Vision Language Model, Large Language Model, Large Multimodal Model, artificial intelligence, AI, AGI, artificial general intelligence"
+		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>
+			StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs
+		</title>
 
-    <link rel="icon" href="./static/images/mmmu_icon2.png">
+		<link rel="icon" href="./static/images/mmmu_icon2.png" />
 
-    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+		<link
+			href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+			rel="stylesheet"
+		/>
 
-    <link rel="stylesheet" href="./static/css/bulma.min.css">
-    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link rel="stylesheet" href="./static/css/index.css">
-    <script src="https://kit.fontawesome.com/fff5b27ec1.js" crossorigin="anonymous"></script>
-    <!-- <script src="https://kit.fontawesome.com/eaf1856e6f.js" crossorigin="anonymous"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script defer src="./static/js/fontawesome.all.min.js"></script>
-    <script src="./static/js/bulma-carousel.min.js"></script>
-    <script src="./static/js/bulma-slider.min.js"></script>
-    <script src="./static/js/index.js"></script>
-  </head>
-  <body>
+		<link rel="stylesheet" href="./static/css/bulma.min.css" />
+		<link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+		<link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+		<link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+		/>
+		<link rel="stylesheet" href="./static/css/index.css" />
+		<script
+			src="https://kit.fontawesome.com/fff5b27ec1.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script defer src="./static/js/fontawesome.all.min.js"></script>
+		<script src="./static/js/bulma-carousel.min.js"></script>
+		<script src="./static/js/bulma-slider.min.js"></script>
+		<script src="./static/js/index.js"></script>
+	</head>
+	<body>
+		<nav class="navbar" role="navigation" aria-label="main navigation">
+			<div class="navbar-brand">
+				<a
+					role="button"
+					class="navbar-burger"
+					aria-label="menu"
+					aria-expanded="false"
+				>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+				</a>
+			</div>
+			<div class="navbar-menu">
+				<div class="navbar-start" style="flex-grow: 1; justify-content: center">
+					<a class="navbar-item" href="#abstract">Abstract</a>
+					<a class="navbar-item" href="#dataset">Dataset</a>
+					<a class="navbar-item" href="#evaluation">Evaluation</a>
+					<a class="navbar-item" href="#leaderboard">Leaderboard</a>
+					<a class="navbar-item" href="#examples">Examples</a>
+					<a class="navbar-item" href="#citation">Citation</a>
+				</div>
+			</div>
+		</nav>
 
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <div class="navbar-menu">
-        <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-          <a class="navbar-item" href="#leaderboard">
-            Leaderboard
-          </a>
-          <a class="navbar-item" href="#examples">
-            Examples
-          </a>
-          <a class="navbar-item" href="#BibTeX">
-            BibTeX
-          </a>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              Related Projects
-            </a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item" href="https://github.com/StructEval/structeval">
-                GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+		<section class="hero">
+			<div class="hero-body">
+				<div class="container is-max-desktop">
+					<div class="columns is-centered">
+						<div class="column has-text-centered">
+							<h1 class="title is-1 publication-title is-bold">
+								<span>
+									<img
+										src="static/images/figures/StructEvalLogo.png"
+										style="max-width: 150px; margin-bottom: 20px"
+										alt="StructEval Logo"
+									/>
+								</span>
+								<span>StructEval</span>
+							</h1>
+							<h2 class="subtitle is-3 publication-subtitle">
+								Benchmarking LLMs' Capabilities to Generate Structural Outputs
+							</h2>
+							<div class="is-size-5 publication-authors">
+								<span class="author-block"
+									>Jialin Yang, Dongfu Jiang, Lipeng He, Sherman Siu, Yuxuan
+									Zhang, Disen Liao, Zhuofeng Li, Huaye Zeng, Yiming Jia, Haozhe
+									Wang, Benjamin Schneider, Chi Ruan, Wentao Ma, Zhiheng Lyu,
+									Yifei Wang, Yi Lu, Quy Duc Do, Ziyan Jiang, Ping Nie, Wenhu
+									Chen</span
+								>
+							</div>
+							<br />
+							<div class="column has-text-centered">
+								<div class="publication-links">
+									<span class="link-block">
+										<a
+											href="#"
+											class="external-link button is-normal is-rounded is-dark"
+										>
+											<span class="icon">
+												<i class="fas fa-file-pdf"></i>
+											</span>
+											<span>Paper (PDF)</span>
+										</a>
+									</span>
+									<span class="link-block">
+										<a
+											href="https://github.com/TIGER-AI-Lab/StructEval"
+											class="external-link button is-normal is-rounded is-dark"
+										>
+											<span class="icon">
+												<i class="fab fa-github"></i>
+											</span>
+											<span>Code (GitHub)</span>
+										</a>
+									</span>
+									<span class="link-block">
+										<a
+											href="#leaderboard"
+											class="external-link button is-normal is-rounded is-dark"
+										>
+											<span class="icon has-text-white">
+												<i class="fa-solid fa-trophy"></i>
+											</span>
+											<span>Leaderboard</span>
+										</a>
+									</span>
+									<span class="link-block">
+										<a
+											href="https://huggingface.co/datasets/TIGER-Lab/StructEval"
+											class="external-link button is-normal is-rounded is-dark"
+										>
+											<span class="icon has-text-white">🤗</span>
+											<span>Hugging Face</span>
+										</a>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-    <section class="hero">
-      <div class="hero-body">
-        <div class="container is-max-desktop">
-          <div class="columns is-centered">
-            <div class="column has-text-centered">
-              <h1 class="title is-1 publication-title is-bold">
-                StructEval
-              </h1>
-              <h1 class="title is-1 publication-title is-bold">
-                <img src="static/images/figures/StructEvalLogo.png" style="max-width:150px; margin-bottom: 20px;" alt="StructEval Logo"/>
-              </h1>
-              <h2 class="subtitle is-3 publication-subtitle">
-                Benchmarking LLMs' Capabilities to Generate Structural Outputs
-              </h2>
-              <div class="is-size-5 publication-authors">
-                <span class="author-block"><b>StructEval Team</b></span>
-              </div>
-              <br>
-              <div class="column has-text-centered">
-                <div class="publication-links">
-                  <span class="link-block">
-                    <a href="https://arxiv.org/abs/xxxxx" class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Paper (PDF)</span>
-                    </a>
-                  </span>
-                  <span class="link-block">
-                    <a href="https://github.com/StructEval/structeval" class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fab fa-github"></i>
-                      </span>
-                      <span>Code (GitHub)</span>
-                    </a>
-                  </span>
-                  <span class="link-block">
-                    <a href="#leaderboard" class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon has-text-white">
-                        <i class="fa-solid fa-trophy"></i>
-                      </span>
-                      <span>Leaderboard</span>
-                    </a>
-                  </span>
-                  <span class="link-block">
-                    <a href="https://structeval.org/eval" class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon has-text-white">
-                        <i class="fa-solid fa-server"></i>
-                      </span>
-                      <span>Eval Server</span>
-                    </a>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+		<section class="hero teaser" style="padding: 50px 0px">
+			<div class="container is-max-desktop has-text-centered">
+				<img
+					src="static/images/figures/intro.png"
+					alt="StructEval Overview"
+					style="max-width: 75%; margin-left: 48px"
+				/>
+				<p style="margin-top: 15px">
+					Our benchmark encompasses 21 distinct formats and 44 task types
+					organized into two complementary subsets: <i>StructEval-T</i>, which
+					assesses the generation of text-only structures such as JSON and TOML,
+					and <i>StructEval-V</i>, which evaluates the quality of visually
+					rendered outputs from code such as HTML and SVG.
+				</p>
+			</div>
+		</section>
 
-    <section class="hero teaser">
-      <div class="container is-max-desktop has-text-centered">
-        <img src="static/images/structeval_overview.png" alt="StructEval Overview">
-        <p>StructEval presents four key features:
-          1) <b>Formats</b>: 18 structured formats (e.g., JSON, HTML, SVG, React, CSV, YAML…);
-          2) <b>Task Types</b>: 44 tasks across generation and conversion paradigms;
-          3) <b>Evaluation</b>: Syntax, keyword match, visual QA;
-          4) <b>Example Count</b>: 2,035 high-quality examples.
-        </p>
-      </div>
-    </section>
+		<section class="section" id="abstract" style="padding-top: 70px">
+			<div class="container is-max-desktop">
+				<h2 class="title is-3 has-text-centered" style="margin-bottom: 25px">
+					Abstract
+				</h2>
+				<div class="content has-text-justified">
+					<p>
+						As Large Language Models (LLMs) become integral to software
+						development workflows, their ability to generate structured outputs
+						has become critically important. We introduce <b>StructEval</b>, a
+						comprehensive benchmark for evaluating LLMs' capabilities in
+						producing both non-renderable (JSON, YAML, CSV) and renderable
+						(HTML, React, SVG) structured formats. Unlike prior benchmarks,
+						StructEval systematically evaluates structural fidelity across
+						diverse formats through two paradigms: (1) generation tasks,
+						producing structured output from natural language prompts, and (2)
+						conversion tasks, translating between structured formats.
+					</p>
+					<p>
+						Our benchmark encompasses 18 formats and 44 types of tasks, with
+						novel metrics for format adherence and structural correctness.
+						Results reveal significant performance gaps—even state-of-the-art
+						models like o1-mini achieve only 75.58% average score, with
+						open-source alternatives lagging approximately 10 points behind. We
+						find generation tasks more challenging than conversion tasks, and
+						producing correct visual content more difficult than generating
+						text-only structures.
+					</p>
+				</div>
+			</div>
+		</section>
 
-    <section class="section">
-      <div class="container" style="margin-bottom: 2vh;">
-        <!-- News Section -->
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">🛎️ News</h2>
-            <div class="content has-text-justified">
-              <p>
-                <b>🛎️[2025-05-22]: StructEval v1.0 released with 2,035 examples across 44 tasks.</b>
-              </p>
-              <p>
-                <b>🛎️[2025-06-15 (planned)]: Evaluation server will go online.</b>
-              </p>
-              <p>
-                <b>🛎️[2025-07 (planned)]: First leaderboard snapshot to be published.</b>
-              </p>
-          </div>
-            <h2 class="title is-3">Introduction</h2>
-            <div class="content has-text-justified">
-              <p>
-                We introduce StructEval, a benchmark for evaluating LLMs' abilities to produce structured outputs across a wide range of data formats and task settings. Unlike prior benchmarks that target plain text generation, StructEval focuses on tasks involving both generation of and conversion between structured data formats, such as JSON, HTML, React, LaTeX, and CSV. It covers a total of 44 tasks grouped into two primary paradigms: structured generation and structured conversion. The dataset includes 2,035 carefully validated instances, annotated with high precision and designed to test reasoning, formatting, and representation fidelity in LLM outputs.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!--/ News and Introduction. -->
-    </div>
-    </section>
+		<hr />
 
-    <!-- INTRODUCTION & OVERVIEW SECTION -->
-    <section class="section">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Motivation</h2>
-        <div class="content has-text-justified">
-          <p>In recent years, there has been a significant surge in the capabilities of large language models (LLMs) in generating human-like text and performing a wide range of natural language processing tasks. State-of-the-art models like GPT-4o, OpenAI o1/o3, and Google's Gemini have achieved superior performance in knowledge QA, instruction-following, and code generation.</p>
-          <p>Despite recent advances, many real-world applications require not only fluency in the content of the output but also precise control over its structure. This includes tasks where the expected output must follow specific formats such as JSON, XML, LaTeX, HTML, or code in frameworks like React or Vue. These types of structured output are essential in domains like software development, data pipelines, user interface generation, and scientific publishing, where incorrect formatting can lead to disrupted pipelines or non-functional outputs.</p>
-          <p>However, most existing benchmarks focus on the semantic quality or reasoning ability of LLMs, with limited emphasis on their ability to produce format-conforming structured outputs. Some recently proposed benchmarks aim to evaluate the quality of structured outputs but tend to target specific modalities, such as code generation or text-only structures, rather than offering comprehensive evaluations across diverse structured formats. As existing benchmarks gradually become more saturated, it is still unknown how the current state-of-the-art models perform in structured generation tasks.</p>
-          <p>To address these challenges, we introduce <b>StructEval</b>, a comprehensive benchmark that systematically evaluates LLMs' abilities to produce highly structured output. Our benchmark encompasses 21 distinct formats and 44 task types organized into two complementary subsets: <b>StructEval-T</b> (text-only structures) and <b>StructEval-V</b> (visually rendered outputs). Both subsets include generation and conversion tasks. We have developed a novel assessment framework that integrates syntactic validity checking, keyword matching, and visual question answering, providing a holistic measure of both structural correctness and output fidelity.</p>
-        </div>
-        <div class="has-text-centered">
-          <img src="static/images/figures/intro.png" alt="StructEval Overview" style="max-width: 90%;">
-          <p class="caption">StructEval evaluates the LLM's capability to generate structured outputs, including text-only tasks like JSON, TOML, etc, and visual rendering tasks like HTML, React, Latex, etc.</p>
-        </div>
-      </div>
-    </section>
+		<section class="section" id="dataset" style="padding-top: 50px">
+			<div class="container is-max-desktop">
+				<h2 class="title is-3 has-text-centered" style="margin-bottom: 25px">
+					Dataset Overview
+				</h2>
+				<div class="content has-text-justified">
+					<p>
+						<b>StructEval</b> comprises <b>2,035 examples</b> covering
+						<b>44 unique structure generation tasks</b> across
+						<b>18 structured output formats</b>. The dataset is organized into
+						two main subsets:
+					</p>
+					<div class="columns is-centered" style="margin-top: 30px">
+						<div class="column is-5" style="width: 50%">
+							<div class="box has-background-light">
+								<h4
+									class="title is-5 has-text-centered"
+									style="margin-bottom: 10px"
+								>
+									📝 StructEval-T
+								</h4>
+								<p class="has-text-centered">
+									Evaluates text-only structured outputs
+								</p>
+								<hr
+									style="
+										background-color: rgb(122 122 122 / 40%);
+										margin-top: 15px;
+									"
+								/>
+								<ul>
+									<li><b>Formats:</b> JSON, XML, YAML, CSV, TOML</li>
+									<li><b>Tasks:</b> 19 (5 generation, 14 conversion)</li>
+									<li><b>Examples:</b> 950</li>
+									<li>
+										<b>Focus:</b> Syntactic validity & structural correctness
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="column is-5" style="width: 50%">
+							<div class="box has-background-info-light">
+								<h4
+									class="title is-5 has-text-centered"
+									style="margin-bottom: 10px"
+								>
+									🎨 StructEval-V
+								</h4>
+								<p class="has-text-centered">
+									Evaluates visually rendered outputs
+								</p>
+								<hr
+									style="
+										background-color: rgb(122 122 122 / 40%);
+										margin-top: 15px;
+									"
+								/>
+								<ul>
+									<li>
+										<b>Formats:</b> HTML, React, SVG, LaTeX, Mermaid, etc.
+									</li>
+									<li><b>Tasks:</b> 25 (13 generation, 12 conversion)</li>
+									<li><b>Examples:</b> 1,085</li>
+									<li><b>Focus:</b> Visual correctness via VQA evaluation</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-    <!-- DATASET SECTION -->
-    <section class="hero is-light is-small">
-      <div class="hero-body has-text-centered">
-        <h2 class="title is-3">Dataset & Task Coverage</h2>
-        <div class="content has-text-justified">
-          <table class="table is-fullwidth">
-            <thead>
-              <tr>
-                <th>Subset</th>
-                <th>Task Types</th>
-                <th>Formats</th>
-                <th>Examples</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>StructEval-T</td>
-                <td>19</td>
-                <td>JSON, YAML, TOML…</td>
-                <td>950</td>
-              </tr>
-              <tr>
-                <td>StructEval-V</td>
-                <td>25</td>
-                <td>HTML, React, SVG…</td>
-                <td>1,085</td>
-              </tr>
-              <tr>
-                <td>Total</td>
-                <td>44</td>
-                <td>18 structured types</td>
-                <td>2,035</td>
-              </tr>
-            </tbody>
-          </table>
-          <p>
-            Notes:
-            <ul>
-              <li>Text-based formats include JSON, YAML, TOML, LaTeX, etc.</li>
-              <li>Renderable formats include HTML, Markdown, React, SVG, etc.</li>
-              <li>Tasks span input-output transformation, generation from intent, and structured editing.</li>
-            </ul>
-          </p>
-        </div>
-      </div>
-    </section>
+		<hr />
 
-    <!-- RESULTS SECTION -->
-    <section class="hero is-light is-small">
-      <div class="hero-body has-text-centered">
-        <h1 class="title is-1">Experiment Results</h1>
-      </div>
-    </section>
+		<section class="section" id="evaluation">
+			<div class="container">
+				<h2 class="title is-3 has-text-centered">Evaluation Framework</h2>
+				<div class="columns is-centered">
+					<div class="column is-10">
+						<div class="content has-text-centered" style="margin-bottom: 50px">
+							<img
+								src="static/images/imgs/annotation_pipeline.png"
+								alt="Evaluation Pipeline"
+								style="max-width: 90%; margin: 20px auto"
+							/>
+						</div>
+						<div class="content has-text-justified">
+							<p>Our evaluation framework employs three core metrics:</p>
+							<div class="columns" style="margin-top: 10px">
+								<div class="column is-4">
+									<div class="box">
+										<h5 class="title is-5">✓ Syntax Score</h5>
+										<p style="text-align: left">
+											Verifies structural correctness using format-specific
+											parsers or rendering engines
+										</p>
+									</div>
+								</div>
+								<div class="column is-4">
+									<div class="box">
+										<h5 class="title is-5">🔍 Keyword Matching</h5>
+										<p style="text-align: left">
+											Evaluates presence of required structural elements using
+											path-based rules
+										</p>
+									</div>
+								</div>
+								<div class="column is-4">
+									<div class="box">
+										<h5 class="title is-5">👁️ VQA Score</h5>
+										<p style="text-align: left">
+											Assesses visual correctness through GPT-4V-based question
+											answering (V tasks only)
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-    <section class="section">
-      <div class="container">
-        <!-------------------------------------------------------------------- RESULTS SECTION -------------------------------------------------------------------->
-        <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3" id="leaderboard">Leaderboard</h2>
-            <div class="content has-text-justified">
-              <p>
-                We evaluate various models including LLMs and LMMs.
-                In each type, we consider both closed- and open-source models.
-                Our evaluation is conducted under a zero-shot setting to assess the capability of models to generate accurate answers without fine-tuning or few-shot demonstrations on our benchmark.
-                For all models, we use the default prompt provided by each model for multi-choice or open QA, if available.
-                If models do not provide prompts for task types in StructEval, we conduct prompt engineering on the validation set and use the most effective prompt for the later zero-shot experiment.
-              </p>
-            </div>
-            <br>
-            
-            <div class="content has-text-justified">
-              <table class="table is-fullwidth">
-                <thead>
-                  <tr>
-                    <th>Models</th>
-                    <th colspan="2">StructEval-T</th>
-                    <th colspan="2">StructEval-V</th>
-                    <th>Average</th>
-                  </tr>
-                  <tr>
-                    <th></th>
-                    <th>generation</th>
-                    <th>conversion</th>
-                    <th>generation</th>
-                    <th>conversion</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td colspan="6" style="background-color: #f5f5f5;"><strong>Open Source</strong></td>
-                  </tr>
-                  <tr>
-                    <td>Llama-3.1-8B-Instruct (Grattafiori et al., 2024)</td>
-                    <td>60.22</td>
-                    <td>71.26</td>
-                    <td>54.44</td>
-                    <td>61.15</td>
-                    <td>61.77</td>
-                  </tr>
-                  <tr>
-                    <td>Meta-Llama-3-8B-Instruct (Grattafiori et al., 2024)</td>
-                    <td>49.18</td>
-                    <td>53.65</td>
-                    <td>46.61</td>
-                    <td>56.91</td>
-                    <td>51.59</td>
-                  </tr>
-                  <tr>
-                    <td>Phi-3-mini-128k-instruct (Abdin et al., 2024a)</td>
-                    <td>47.39</td>
-                    <td>29.78</td>
-                    <td>44.77</td>
-                    <td>41.23</td>
-                    <td>40.79</td>
-                  </tr>
-                  <tr>
-                    <td>Phi-4-mini-instruct (Abdin et al., 2024b)</td>
-                    <td>51.38</td>
-                    <td>72.39</td>
-                    <td>51.62</td>
-                    <td>52.48</td>
-                    <td>56.97</td>
-                  </tr>
-                  <tr>
-                    <td>Qwen2.5-7B-Instruct (Team, 2024)</td>
-                    <td>59.21</td>
-                    <td>62.18</td>
-                    <td>53.28</td>
-                    <td>61.43</td>
-                    <td>59.03</td>
-                  </tr>
-                  <tr>
-                    <td>Qwen3-4B (Yang et al., 2025)</td>
-                    <td>64.95</td>
-                    <td>81.13</td>
-                    <td>57.00</td>
-                    <td>65.08</td>
-                    <td>67.04</td>
-                  </tr>
-                  <tr>
-                    <td colspan="6" style="background-color: #f5f5f5;"><strong>Close Source</strong></td>
-                  </tr>
-                  <tr>
-                    <td>Gemini-1.5-pro (Team et al., 2023)</td>
-                    <td>88.07</td>
-                    <td>74.24</td>
-                    <td>58.11</td>
-                    <td>66.59</td>
-                    <td>71.75</td>
-                  </tr>
-                  <tr>
-                    <td>Gemini-2.0-flash (Team et al., 2023)</td>
-                    <td>72.42</td>
-                    <td>72.20</td>
-                    <td>53.62</td>
-                    <td>51.97</td>
-                    <td>62.55</td>
-                  </tr>
-                  <tr>
-                    <td>GPT-4.1-mini (OpenAI, 2025)</td>
-                    <td>92.57</td>
-                    <td>75.63</td>
-                    <td>64.30</td>
-                    <td>70.04</td>
-                    <td>75.64</td>
-                  </tr>
-                  <tr>
-                    <td>GPT-4o (Hurst et al., 2024)</td>
-                    <td>91.52</td>
-                    <td>73.95</td>
-                    <td>65.39</td>
-                    <td>73.20</td>
-                    <td>76.02</td>
-                  </tr>
-                  <tr>
-                    <td>GPT-4o-mini (Hurst et al., 2024)</td>
-                    <td>79.86</td>
-                    <td>75.57</td>
-                    <td>60.77</td>
-                    <td>76.54</td>
-                    <td>73.19</td>
-                  </tr>
-                  <tr>
-                    <td>o1-mini (Contributors et al., 2024)</td>
-                    <td>88.12</td>
-                    <td>81.82</td>
-                    <td>61.98</td>
-                    <td>70.40</td>
-                    <td>75.58</td>
-                  </tr>
-                  <tr>
-                    <td>Δ (o1-mini - Qwen3-4B)</td>
-                    <td>23.17</td>
-                    <td>0.70</td>
-                    <td>4.99</td>
-                    <td>5.32</td>
-                    <td>8.54</td>
-                  </tr>
-                </tbody>
-              </table>
-              <p class="has-text-centered">Table 4: Main evaluation results of StructEval</p>
-            </div>
-            
-            <div class="model-labels-container">
-              <span class="leaderboard-label human_expert">Human Expert</span>
-              <span class="leaderboard-label open_source">Open-Source</span>
-              <span class="leaderboard-label proprietary">Proprietary</span>
-            </div>
-            <br>
-            <div class="content has-text-centered">
-              <p>
-                Click on StructEval-Pro, StructEval (Val) or StructEval (Test) to expand detailed results.
-              </p>
-            </div>
-            <div class="leaderboard-container">
-              <div class="table-wrapper">
-                <table id="structeval-table">
-                  <thead>
-                    <tr>
-                      <th colspan="3" class="reset-cell clickable" style="text-align: center;">Reset</th>
-                      <th class="pro-details-cell clickable" colspan="1">StructEval-Pro</th>
-                      <th class="val-details-cell clickable" colspan="1">StructEval-T</th>
-                      <th class="test-details-cell clickable" colspan="1">StructEval-V</th>
-                    </tr>
-                    <tr>
-                      <th class="sortable clickable" data-sort="string">Name</th>
-                      <th class="clickable" data-sort="string">Size</th>
-                      <th class="sortable clickable" data-sort="date">Date</th>
-                      <th class="sortable clickable pro-overall" data-sort="number">Overall</th>
-                      <th class="hidden pro-details sortable clickable" data-sort="number">Section 1</th>
-                      <th class="hidden pro-details sortable clickable" data-sort="number">Section 2</th>
-                      <th class="sortable clickable val-overall" data-sort="number">Generation</th>
-                      <th class="hidden val-details sortable clickable" data-sort="number">Conversion</th>
-                      <th class="hidden val-details sortable clickable" data-sort="number">Generation</th>
-                      <th class="hidden val-details sortable clickable" data-sort="number">Conversion</th>
-                      <th class="hidden val-details sortable clickable" data-sort="number">(Reserved)</th>
-                      <th class="hidden val-details sortable clickable" data-sort="number">(Reserved)</th>
-                      <th class="hidden val-details sortable clickable" data-sort="number">(Reserved)</th>
-                      <th class="sortable clickable test-overall" data-sort="number">Average</th>
-                      <th class="hidden test-details sortable clickable" data-sort="number">(Reserved)</th>
-                      <th class="hidden test-details sortable clickable" data-sort="number">(Reserved)</th>
-                      <th class="hidden test-details sortable clickable" data-sort="number">(Reserved)</th>
-                      <th class="hidden test-details sortable clickable" data-sort="number">(Reserved)</th>
-                      <th class="hidden test-details sortable clickable" data-sort="number">(Reserved)</th>
-                      <th class="hidden test-details sortable clickable" data-sort="number">(Reserved)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- Table body will be populated dynamically -->
-                  </tbody>
-                </table>
-                <p class="test-desc"> Overall results of different models on the StructEval leaderboard. The best-performing model in each category is <b>in-bold</b>, and the second best is <u>underlined</u>. *: results provided by the authors.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-------------------------------------------------------------------- Rendered Image Types SECTION -------------------------------------------------------------------->
-        <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">Rendered Images from different format types</h2>
-            <div class="content has-text-justified">
-              <p>
-                Below are examples of various structured output formats rendered by models in our benchmark. 
-                These examples showcase the diversity of data formats evaluated in StructEval, 
-                from markup languages like HTML and LaTeX to data-interchange formats like JSON and YAML. 
-                The quality and correctness of these rendered outputs contribute to the model's overall score.
-              </p>
-            </div>
-            <div class="content has-text-centered">
-              <div class="columns is-multiline is-centered">
-                <div class="column is-one-third">
-                  <img src="static/images/imgs/000107.png" alt="Structured Output Example 1" style="width: 100%; max-width: 350px;">
-                  <p class="caption">JSON Generation Example</p>
-                </div>
-                <div class="column is-one-third">
-                  <img src="static/images/imgs/000829.png" alt="Structured Output Example 2" style="width: 100%; max-width: 350px;">
-                  <p class="caption">HTML Generation Example</p>
-                </div>
-                <div class="column is-one-third">
-                  <img src="static/images/imgs/000936.png" alt="Structured Output Example 3" style="width: 100%; max-width: 350px;">
-                  <p class="caption">React Component Example</p>
-                </div>
-                <div class="column is-one-third">
-                  <img src="static/images/imgs/001126.png" alt="Structured Output Example 4" style="width: 100%; max-width: 350px;">
-                  <p class="caption">SVG Generation Example</p>
-                </div>
-                <div class="column is-one-third">
-                  <img src="static/images/imgs/001210.png" alt="Structured Output Example 5" style="width: 100%; max-width: 350px;">
-                  <p class="caption">LaTeX Equation Example</p>
-                </div>
-                <div class="column is-one-third">
-                  <img src="static/images/imgs/001312.png" alt="Structured Output Example 6" style="width: 100%; max-width: 350px;">
-                  <p class="caption">YAML to XML Conversion Example</p>
-                </div>
-              </div>
-              <p class="bottom-text">Examples of different structured format types generated by models in our benchmark.</p>
-            </div>
-          </div>
-        </div>
-        <!-------------------------------------------------------------------- Difficulty Levels SECTION -------------------------------------------------------------------->
-        <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">Different Difficulty Levels</h2>
-            <div class="content has-text-justified">
-              <p>
-                We compare the performance of selected models across three difficulty levels in structured output generation.
-                GPT-4o demonstrates significantly higher proficiency, with a success rate of over 75%, compared to open-source models in the "Easy" category.
-                When it comes to the "Medium" difficulty tasks, while the gap narrows, GPT-4o still leads at around 60%.
-                The performance gap in the "Hard" category across models indicates that as the complexity of the structure increases, even the most advanced models struggle.
-                This reflects current limitations in handling complex structured outputs that require precise formatting and intricate nested structures.
-              </p>
-            </div>
-            <div class="content has-text-centered">
-              <p>Click legend to switch the comparison chart.</p>
-            </div>
-            <div class="content has-text-centered">
-              <canvas id="difficulty_level_chart"></canvas>
-              <p>Result decomposition across question difficulty levels.</p>
-            </div>
-          </div>
-        </div>
-      <!-------------------------------------------------------------------- Generation VS Conversion SECTION -------------------------------------------------------------------->
-        <div class="columns is-centered m-6">
-        <div class="column is-full has-text-centered content">
-          <h2 class="title is-3">Generation VS Conversion Tasks</h2>
-          <div class="content has-text-justified">
-            <p>
-              We analyze the performance of models on two primary task paradigms: generation (creating structured outputs from natural language instructions) and conversion (transforming one structured format to another). Results show that most models perform better on generation tasks where they can leverage their instruction-following abilities. Conversion tasks prove more challenging as they require precise understanding of both the input and output format specifications.
-            </p>
-          </div>
-          <div class="content has-text-centered">
-            <div class="content has-text-centered">
-              <p>Click legend to switch the comparison chart.</p>
-            </div>
-            <canvas id="single_vs_multiple_chart"></canvas>
-            <p>Result decomposition across generation and conversion task paradigms.</p>
-          </div>
-        </div>
-        </div>
-      <!-------------------------------------------------------------------- Annotation Pipeline SECTION -------------------------------------------------------------------->
-        <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">Annotation Pipeline</h2>
-            <div class="content has-text-justified">
-              <p>
-                The annotation process for StructEval follows a rigorous methodology to ensure high-quality evaluation data. 
-                Our pipeline includes validation of syntax correctness, semantic accuracy, and visual question-answer pairs for formats 
-                that produce rendered outputs. Each sample undergoes multiple expert verification steps before being included in the benchmark.
-              </p>
-            </div>
-            <div class="content has-text-centered">
-              <embed src="static/images/annotation_pipeline.pdf" type="application/pdf" width="80%" height="600px" />
-              <p>Figure: The annotation pipeline for the StructEval benchmark.</p>
-            </div>
-          </div>
-        </div>
-      <!-------------------------------------------------------------------- Error Analysis SECTION -------------------------------------------------------------------->
-        <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">Error Analysis</h2>
-            <div class="content has-text-justified">
-              <p>
-                We delve into the analysis of errors by GPT-4o, a pivotal aspect for understanding its operational capabilities and limitations in structured output generation.
-                This analysis serves not only to identify the model's current shortcomings but also to guide future enhancements in its design and training.
-                We meticulously examine 150 randomly sampled error instances from GPT-4o's predictions.
-                These instances are analyzed by expert annotators who identify the root causes of mispredictions based on their knowledge and analysis of the expected outputs.
-                The distribution of these errors is illustrated in the figure, with syntax errors and structure misalignment being the most common issues.
-              </p>
-            </div>
-            <div class="content has-text-centered">
-              <img src="static/images/figures/error_distribution.png" alt="error distribution" width="40%">
-              <p>Error distribution over 150 annotated GPT-4o errors in structured output generation.</p>
-            </div>
-          </div>
-        </div>
-      <!-------------------------------------------------------------------- Error Example  -------------------------------------------------------------------->
-        <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3" id="examples">Structured Output Error Examples</h2>
-            <div class="carousel results-carousel">
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/imgs/error/json_error1.png" alt="json-error" width="60%"/>
-                </div>
-              </div>
-              <!-- Additional error examples would be here -->
-            </div>
-          </div>
-        </div>
-      <!-------------------------------------------------------------------- Correct Example -------------------------------------------------------------------->
-        <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">Successful Structured Output Examples</h2>
-            <div id="results-carousel" class="carousel results-carousel">
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/imgs/correct/json_correct1.png" alt="json-correct" width="60%"/>
-                </div>
-              </div>
-              <!-- Additional correct examples would be here -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+		<hr />
 
-    <!-- @PAN TODO: bibtex -->
-    <section class="section" id="BibTeX">
-      <div class="container is-max-desktop content">
-        <h2 class="title is-3 has-text-centered">BibTeX</h2>
-        <pre><code>
-          @inproceedings{structeval2025,
-            title={StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs},
-            author={StructEval Team},
-            booktitle={Proceedings of Conference},
-            year={2025},
-          }
-    </code></pre>
-      </div>
-    </section>
+		<section
+			class="section"
+			style="padding-bottom: 20px; padding-top: 0px"
+			id="leaderboard"
+		>
+			<div class="container">
+				<div class="columns is-centered m-6">
+					<div class="column is-full has-text-centered content">
+						<h2 class="title is-3" id="leaderboard">Leaderboard</h2>
 
-    <footer class="footer">
-      <div class="columns is-centered">
-        <div class="column is-8">
-          <div class="content">
-            <p>
-              This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a>, licensed under a <a rel="license"
-                                                  href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-              Commons Attribution-ShareAlike 4.0 International License</a>.
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
+						<div class="content has-text-justified">
+							<p>
+								We evaluate various state-of-the-art LLMs in a zero-shot
+								setting. The table below shows the performance breakdown across
+								our four task categories. Click on the column headers to expand
+								detailed results.
+							</p>
+						</div>
 
-  </body>
+						<div class="model-labels-container">
+							<span class="leaderboard-label open_source">Open-Source</span>
+							<span class="leaderboard-label proprietary">Closed-Source</span>
+						</div>
+						<br />
+
+						<div class="leaderboard-container">
+							<div class="table-wrapper">
+								<table id="structeval-table">
+									<thead>
+										<tr>
+											<th
+												rowspan="2"
+												class="sortable clickable"
+												data-sort="string"
+											>
+												Model
+											</th>
+											<th
+												rowspan="2"
+												class="sortable clickable"
+												data-sort="string"
+											>
+												Type
+											</th>
+											<th colspan="2" style="text-align: center">
+												StructEval-T
+											</th>
+											<th colspan="2" style="text-align: center">
+												StructEval-V
+											</th>
+											<th
+												rowspan="2"
+												class="sortable clickable"
+												data-sort="number"
+											>
+												Average
+											</th>
+										</tr>
+										<tr>
+											<th class="sortable clickable" data-sort="number">
+												Generation
+											</th>
+											<th class="sortable clickable" data-sort="number">
+												Conversion
+											</th>
+											<th class="sortable clickable" data-sort="number">
+												Generation
+											</th>
+											<th class="sortable clickable" data-sort="number">
+												Conversion
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- Table body will be populated dynamically -->
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<div class="content has-text-justified" style="margin-top: 30px">
+							<p><b>Key Findings:</b></p>
+							<ul>
+								<li>
+									GPT-4o achieves the highest overall performance at 76.02%,
+									while the best open-source model (Qwen3-4B) reaches 67.04%
+								</li>
+								<li>
+									Commercial models significantly outperform open-source
+									alternatives, especially on StructEval-T generation tasks
+								</li>
+								<li>
+									Visual rendering tasks (StructEval-V) prove more challenging
+									than text-only structures across all models
+								</li>
+								<li>
+									Several formats remain particularly challenging, with all
+									models scoring below 50% on tasks like Text→Mermaid and
+									Matplotlib→TikZ
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<hr />
+
+				<!-- Performance Analysis Charts -->
+				<div class="columns is-centered m-6">
+					<div class="column is-full has-text-centered content">
+						<h2 class="title is-3">Performance Analysis</h2>
+						<div class="columns" style="margin-top: 20px">
+							<div class="column is-6">
+								<canvas id="task_type_chart"></canvas>
+								<p class="has-text-centered">Performance by Task Type</p>
+							</div>
+							<div class="column is-6">
+								<canvas id="format_difficulty_chart"></canvas>
+								<p class="has-text-centered">
+									Challenging Formats (Average Score < 50%)
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<hr />
+
+		<!-- Examples Section -->
+		<section class="section" id="examples" style="padding: 25px 0px">
+			<div class="container">
+				<h2 class="title is-3 has-text-centered">Example Tasks</h2>
+
+				<div class="columns is-centered">
+					<div class="column is-10">
+						<div class="tabs is-boxed is-centered">
+							<ul>
+								<li class="is-active">
+									<a onclick="showExample('generation')">
+										<span>Generation Tasks</span>
+									</a>
+								</li>
+								<li>
+									<a onclick="showExample('conversion')">
+										<span>Conversion Tasks</span>
+									</a>
+								</li>
+								<li>
+									<a onclick="showExample('rendered')">
+										<span>Rendered Outputs</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+
+						<div id="generation-examples" class="example-content">
+							<div class="box">
+								<h4 class="title is-5">📝 StructEval-T Generation Example</h4>
+								<div class="columns">
+									<div class="column is-6">
+										<h6 class="subtitle is-6">Task Prompt:</h6>
+										<pre style="font-size: 0.85em">
+Please output JSON code.
+
+Task:
+Summarize metadata about a fictional 
+scientific article.
+
+Feature Requirements:
+1. Top-level field "title" is a string
+2. Field "authors" is a list of exactly two items
+3. Each author has "name" and "affiliation"
+4. Field "publication.year" is an integer
+5. Field "keywords" is a list of strings</pre
+										>
+									</div>
+									<div class="column is-6">
+										<h6 class="subtitle is-6">Expected Keywords:</h6>
+										<ul>
+											<li><code>title</code></li>
+											<li><code>authors[0].name</code></li>
+											<li><code>authors[1].affiliation</code></li>
+											<li><code>publication.year</code></li>
+											<li><code>keywords[2]</code></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="box">
+								<h4 class="title is-5">🎨 StructEval-V Generation Example</h4>
+								<div class="columns">
+									<div class="column is-6">
+										<h6 class="subtitle is-6">Task Prompt:</h6>
+										<pre style="font-size: 0.85em">
+Please output HTML code.
+
+Task:
+Design a webpage for a travel itinerary.
+
+Feature Requirements:
+• Centered &lt;h1&gt; with "Trip Summary"
+• Use a &lt;table&gt; with 3 rows and 2 columns
+• Apply class "highlight" to second row
+• Add &lt;button&gt; labeled "Export PDF"</pre
+										>
+									</div>
+									<div class="column is-6">
+										<h6 class="subtitle is-6">VQA Evaluation:</h6>
+										<ul>
+											<li>
+												<b>Q:</b> What text is in the h1 header?<br /><b>A:</b>
+												Trip Summary
+											</li>
+											<li>
+												<b>Q:</b> How many rows are in the table?<br /><b>A:</b>
+												3
+											</li>
+											<li>
+												<b>Q:</b> What class is on the second row?<br /><b
+													>A:</b
+												>
+												highlight
+											</li>
+											<li>
+												<b>Q:</b> What text is on the button?<br /><b>A:</b>
+												Export PDF
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div
+							id="conversion-examples"
+							class="example-content"
+							style="display: none"
+						>
+							<div class="box">
+								<h4 class="title is-5">Format Conversion Examples</h4>
+								<div class="columns">
+									<div class="column is-6">
+										<h6 class="subtitle is-6">JSON → YAML</h6>
+										<pre style="font-size: 0.85em">
+{
+  "name": "StructEval",
+  "version": "1.0",
+  "tasks": ["generation", "conversion"],
+  "formats": {
+    "text": ["JSON", "YAML", "XML"],
+    "visual": ["HTML", "React", "SVG"]
+  }
+}</pre
+										>
+									</div>
+									<div class="column is-6">
+										<h6 class="subtitle is-6">Expected YAML Output</h6>
+										<pre style="font-size: 0.85em">
+name: StructEval
+version: "1.0"
+tasks:
+  - generation
+  - conversion
+formats:
+  text:
+    - JSON
+    - YAML
+    - XML
+  visual:
+    - HTML
+    - React
+    - SVG</pre
+										>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div
+							id="rendered-examples"
+							class="example-content"
+							style="display: none"
+						>
+							<h4 class="title is-5 has-text-centered">
+								Example Rendered Outputs
+							</h4>
+							<div class="columns is-multiline">
+								<div class="column is-4">
+									<div class="box">
+										<figure class="image">
+											<img src="static/images/imgs/000107.png" alt="Angular" />
+										</figure>
+										<p class="has-text-centered" style="margin-top: 15px">
+											<b>Angular</b>
+										</p>
+									</div>
+								</div>
+								<div class="column is-4">
+									<div class="box">
+										<figure class="image">
+											<img
+												src="static/images/imgs/000829.png"
+												alt="Matplotlib"
+											/>
+										</figure>
+										<p class="has-text-centered" style="margin-top: 15px">
+											<b>Matplotlib</b>
+										</p>
+									</div>
+								</div>
+								<div class="column is-4">
+									<div class="box">
+										<figure class="image">
+											<img src="static/images/imgs/000936.png" alt="Mermaid" />
+										</figure>
+										<p class="has-text-centered" style="margin-top: 15px">
+											<b>Mermaid</b>
+										</p>
+									</div>
+								</div>
+								<div class="column is-4">
+									<div class="box">
+										<figure class="image">
+											<img src="static/images/imgs/001126.png" alt="React" />
+										</figure>
+										<p class="has-text-centered" style="margin-top: 15px">
+											<b>React</b>
+										</p>
+									</div>
+								</div>
+								<div class="column is-4">
+									<div class="box">
+										<figure class="image">
+											<img src="static/images/imgs/001210.png" alt="SVG" />
+										</figure>
+										<p class="has-text-centered" style="margin-top: 15px">
+											<b>SVG</b>
+										</p>
+									</div>
+								</div>
+								<div class="column is-4">
+									<div class="box">
+										<figure class="image">
+											<img src="static/images/imgs/001312.png" alt="TikZ" />
+										</figure>
+										<p class="has-text-centered" style="margin-top: 15px">
+											<b>TikZ</b>
+										</p>
+									</div>
+								</div>
+								<div class="column is-4">
+									<div class="box">
+										<figure class="image">
+											<img src="static/images/imgs/001509.png" alt="Vega" />
+										</figure>
+										<p class="has-text-centered" style="margin-top: 15px">
+											<b>Vega</b>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<hr />
+
+		<section
+			class="section"
+			id="citation"
+			style="padding-top: 25px; padding-bottom: 100px"
+		>
+			<div class="container is-max-desktop content">
+				<h2 class="title is-3 has-text-centered">Citation</h2>
+				<pre><code>@inproceedings{yue2023mmmu,
+  title={MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI},
+  author={Xiang Yue and Yuansheng Ni and Kai Zhang and Tianyu Zheng and Ruoqi Liu and Ge Zhang and Samuel Stevens and Dongfu Jiang and Weiming Ren and Yuxuan Sun and Cong Wei and Botao Yu and Ruibin Yuan and Renliang Sun and Ming Yin and Boyuan Zheng and Zhenzhu Yang and Yibo Liu and Wenhao Huang and Huan Sun and Yu Su and Wenhu Chen},
+  booktitle={Proceedings of CVPR},
+  year={2024},
+}</code></pre>
+			</div>
+		</section>
+
+		<footer class="footer">
+			<div class="columns is-centered">
+				<div class="column is-8">
+					<div class="content">
+						<p style="text-align: center">
+							This website is website adapted from
+							<a href="https://nerfies.github.io/">Nerfies</a> and
+							<a href="https://mathvista.github.io/">MathVista</a>, licensed
+							under a
+							<a
+								rel="license"
+								href="http://creativecommons.org/licenses/by-sa/4.0/"
+								>Creative Commons Attribution-ShareAlike 4.0 International
+								License</a
+							>.
+						</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+			function showExample(type) {
+				// Hide all example contents
+				document.querySelectorAll(".example-content").forEach((el) => {
+					el.style.display = "none";
+				});
+
+				// Remove active class from all tabs
+				document.querySelectorAll(".tabs li").forEach((el) => {
+					el.classList.remove("is-active");
+				});
+
+				// Show selected content and activate tab
+				document.getElementById(type + "-examples").style.display = "block";
+				event.target.closest("li").classList.add("is-active");
+			}
+		</script>
+	</body>
 </html>
