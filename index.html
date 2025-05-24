@@ -16,7 +16,7 @@
 			StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs
 		</title>
 
-		<link rel="icon" href="./static/images/figures/StructEvalLogo.png" />
+		<link rel="icon" href="./static/images/imgs/logo.png" />
 
 		<link
 			href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
@@ -240,9 +240,10 @@
 							<div
 								style="
 									display: grid;
-									grid-template-columns: repeat(6, 1fr);
+									grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 									width: 100%;
 									border: 0.5px solid #ccc;
+									gap: 0;
 								"
 							>
 								<div
@@ -412,7 +413,7 @@
 					</div>
 
 					<div class="columns is-centered" style="margin-top: 30px">
-						<div class="column is-5" style="width: 50%">
+						<div class="column half">
 							<div class="box has-background-light">
 								<h4
 									class="title is-5 has-text-centered"
@@ -439,12 +440,9 @@
 								</ul>
 							</div>
 						</div>
-						<div class="column is-5" style="width: 50%">
+						<div class="column half">
 							<div class="box has-background-info-light">
-								<h4
-									class="title is-5 has-text-centered"
-									style="margin-bottom: 10px"
-								>
+								<h4 class="title has-text-centered" style="margin-bottom: 10px">
 									🎨 StructEval-V
 								</h4>
 								<p class="has-text-centered">
@@ -479,7 +477,7 @@
 				<h2 class="title is-3 has-text-centered">Example Tasks</h2>
 
 				<div class="columns is-centered">
-					<div class="column is-10">
+					<div class="column is-9">
 						<div class="tabs is-boxed is-centered">
 							<ul>
 								<li class="is-active">
@@ -719,7 +717,7 @@ formats:
 			<div class="container">
 				<h2 class="title is-3 has-text-centered">Evaluation Framework</h2>
 				<div class="columns is-centered">
-					<div class="column is-10">
+					<div class="column is-9">
 						<div class="content has-text-centered" style="margin-bottom: 50px">
 							<img
 								src="static/images/imgs/annotation_pipeline.png"
@@ -772,8 +770,8 @@ formats:
 			id="leaderboard"
 		>
 			<div class="container">
-				<div class="columns is-centered m-6">
-					<div class="column is-full has-text-centered content">
+				<div class="columns is-centered">
+					<div class="column is-full has-text-centered content is-9">
 						<h2 class="title is-3" id="leaderboard">Leaderboard</h2>
 
 						<div class="content has-text-justified">
@@ -850,10 +848,10 @@ formats:
 
 				<hr />
 
-				<div class="columns is-centered m-6" id="analysis">
-					<div class="column is-full has-text-centered content">
+				<div class="columns is-centered" id="analysis">
+					<div class="column is-full has-text-centered content is-9">
 						<h2 class="title is-3">Performance Analysis</h2>
-						<div class="columns" style="margin-top: 20px">
+						<div class="columns" style="margin-top: 25px">
 							<div class="column is-6">
 								<canvas id="task_type_chart"></canvas>
 								<p class="has-text-centered">Performance by Task Type</p>
@@ -872,8 +870,8 @@ formats:
 
 				<div class="container" style="padding-top: 25px; padding-bottom: 50px">
 					<h2 class="title is-3 has-text-centered">Key Findings</h2>
-					<div class="columns is-centered" style="margin-top: 20px">
-						<div class="column is-10">
+					<div class="columns is-centered" style="margin-top: 25px">
+						<div class="column is-9">
 							<div class="columns is-multiline">
 								<div class="column is-6">
 									<div class="box" style="height: 100%">
@@ -965,7 +963,7 @@ formats:
 
 		<footer class="footer">
 			<div class="columns is-centered">
-				<div class="column is-8">
+				<div class="column is-9">
 					<div class="content">
 						<p style="text-align: center">
 							This website is website adapted from

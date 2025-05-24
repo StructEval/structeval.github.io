@@ -31,6 +31,14 @@ body {
 	.publication-subtitle {
 		white-space: nowrap;
 	}
+
+	.half {
+		width: 50%;
+	}
+}
+
+.half {
+	width: 100%;
 }
 
 .publication-subtitle {
