@@ -1,514 +1,521 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-		<meta charset="utf-8" />
-		<meta
-			name="description"
-			content="Benchmarking LLMs' Capabilities to Generate Structural Outputs"
-		/>
-		<meta
-			name="keywords"
-			content="StructEval, LMM, LMM Evaluation, Vision Language Model, Large Language Model, Large Multimodal Model, artificial intelligence, AI, AGI, artificial general intelligence"
-		/>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>
-			StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs
-		</title>
 
-		<link rel="icon" href="./static/images/imgs/logo.png" />
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="Benchmarking LLMs' Capabilities to Generate Structural Outputs" />
+	<meta name="keywords"
+		content="StructEval, LMM, LMM Evaluation, Vision Language Model, Large Language Model, Large Multimodal Model, artificial intelligence, AI, AGI, artificial general intelligence" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>
+		StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs
+	</title>
 
-		<link
-			href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-			rel="stylesheet"
-		/>
+	<link rel="icon" href="./static/images/imgs/logo.png" />
 
-		<link rel="stylesheet" href="./static/css/bulma.min.css" />
-		<link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
-		<link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
-		<link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
-		/>
-		<link rel="stylesheet" href="./static/css/index.css" />
-		<script
-			src="https://kit.fontawesome.com/fff5b27ec1.js"
-			crossorigin="anonymous"
-		></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script defer src="./static/js/fontawesome.all.min.js"></script>
-		<script src="./static/js/bulma-carousel.min.js"></script>
-		<script src="./static/js/bulma-slider.min.js"></script>
-		<script src="./static/js/index.js"></script>
-	</head>
-	<body>
-		<nav class="navbar" role="navigation" aria-label="main navigation">
-			<div class="navbar-brand">
-				<a
-					role="button"
-					class="navbar-burger"
-					aria-label="menu"
-					aria-expanded="false"
-				>
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-				</a>
+	<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+	<link rel="stylesheet" href="./static/css/bulma.min.css" />
+	<link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+	<link rel="stylesheet" href="./static/css/index.css" />
+	<script defer src="./static/js/index.js?v=20261010-results"></script>
+	<link rel="stylesheet" href="./static/css/refresh.css?v=20261010-results" />
+</head>
+
+<body>
+	<nav class="navbar" role="navigation" aria-label="main navigation">
+		<div class="navbar-brand">
+			<button type="button" class="navbar-burger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-menu">
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+			</button>
+		</div>
+		<div class="navbar-menu" id="site-menu">
+			<div class="navbar-start" style="flex-grow: 1; justify-content: center">
+				<a class="navbar-item nav-leaderboard" href="#leaderboard">Leaderboard</a>
+				<a class="navbar-item" href="#abstract">About</a>
+				<a class="navbar-item" href="#dataset">Dataset</a>
+				<a class="navbar-item" href="#examples">Examples</a>
+				<a class="navbar-item" href="#evaluation">Evaluation</a>
+
+				<a class="navbar-item" href="#citation">Citation</a>
 			</div>
-			<div class="navbar-menu">
-				<div class="navbar-start" style="flex-grow: 1; justify-content: center">
-					<a class="navbar-item" href="#abstract">Abstract</a>
-					<a class="navbar-item" href="#dataset">Dataset</a>
-					<a class="navbar-item" href="#examples">Examples</a>
-					<a class="navbar-item" href="#evaluation">Evaluation</a>
-					<a class="navbar-item" href="#leaderboard">Leaderboard</a>
-					<a class="navbar-item" href="#analysis">Analysis</a>
-					<a class="navbar-item" href="#citation">Citation</a>
-				</div>
-			</div>
-		</nav>
+		</div>
+	</nav>
 
-		<section class="hero">
-			<div class="hero-body">
-				<div class="container is-max-desktop">
-					<div class="columns is-centered">
-						<div class="column has-text-centered">
-							<h1 class="title is-1 publication-title is-bold">
-								<span>
-									<img
-										src="static/images/figures/StructEvalLogo.png"
-										style="max-width: 150px; margin-bottom: 20px"
-										alt="StructEval Logo"
-									/>
-								</span>
-								<span>StructEval</span>
-							</h1>
-							<h2 class="subtitle is-3 publication-subtitle">
-								Benchmarking LLMs' Capabilities to Generate Structural Outputs
-							</h2>
-							<div
-								class="is-size-5 publication-authors"
-								style="
+	<section class="hero site-hero">
+		<div class="hero-body">
+			<div class="container is-max-desktop">
+				<div class="columns is-centered">
+					<div class="column has-text-centered">
+						<h1 class="title is-1 publication-title is-bold">
+							<span>
+								<img src="static/images/figures/StructEvalLogo.png" style="max-width: 150px; margin-bottom: 20px"
+									alt="StructEval Logo" />
+							</span>
+							<span>StructEval</span>
+						</h1>
+						<h2 class="subtitle is-3 publication-subtitle">
+							Benchmarking LLMs' Capabilities to Generate Structural Outputs
+						</h2>
+
+						<div class="benchmark-facts"><span><strong>2,035</strong> examples</span><span><strong>18</strong> formats</span><span><strong>44</strong> task types</span></div>
+						<details class="authors-details"><summary>Authors &amp; affiliations <span aria-hidden="true">↗</span></summary>
+						<div class="is-size-5 publication-authors" style="
 									display: flex;
 									flex-direction: column;
 									align-items: center;
-								"
-							>
-								<p class="author-block">
-									Jialin Yang, Dongfu Jiang, Lipeng He, Sherman Siu, Yuxuan
-									Zhang, Disen Liao, Zhuofeng Li, Huaye Zeng, Yiming Jia, Haozhe
-									Wang, Benjamin Schneider, Chi Ruan, Wentao Ma, Zhiheng Lyu,
-									Yifei Wang, Yi Lu, Quy Duc Do, Ziyan Jiang, Ping Nie, Wenhu
-									Chen
-								</p>
-								<p style="margin-top: 25px; font-style: italic">
-									University of Waterloo
-								</p>
-							</div>
-							<br />
-							<div class="column has-text-centered">
-								<div class="publication-links">
-									<span class="link-block">
-										<a
-											href="#"
-											class="external-link button is-normal is-rounded is-dark"
-										>
-											<span class="icon">
-												<i class="fas fa-file-pdf"></i>
-											</span>
-											<span>Paper (PDF)</span>
-										</a>
-									</span>
-									<span class="link-block">
-										<a
-											href="https://github.com/TIGER-AI-Lab/StructEval"
-											class="external-link button is-normal is-rounded is-dark"
-										>
-											<span class="icon">
-												<i class="fab fa-github"></i>
-											</span>
-											<span>Code (GitHub)</span>
-										</a>
-									</span>
-									<span class="link-block">
-										<a
-											href="#leaderboard"
-											class="external-link button is-normal is-rounded is-dark"
-										>
-											<span class="icon has-text-white">
-												<i class="fa-solid fa-trophy"></i>
-											</span>
-											<span>Leaderboard</span>
-										</a>
-									</span>
-									<span class="link-block">
-										<a
-											href="https://huggingface.co/datasets/TIGER-Lab/StructEval"
-											class="external-link button is-normal is-rounded is-dark"
-										>
-											<span class="icon has-text-white">🤗</span>
-											<span>Hugging Face</span>
-										</a>
-									</span>
+								">
+							<p class="author-block">
+								Jialin Yang*†, Dongfu Jiang*†, Lipeng He, Sherman Siu, Yuxuan
+								Zhang<sup>6</sup>, Disen Liao, Zhuofeng Li<sup>3</sup>, Huaye
+								Zeng, Yiming Jia<sup>1</sup>, Haozhe Wang<sup>2</sup>, Benjamin Schneider,
+								Chi Ruan<sup>4</sup>, Wentao Ma, Zhiheng Lyu, Yifei Wang, Yi
+								Lu<sup>1</sup>, Quy Duc Do, Ziyan Jiang, Ping Nie,
+								Wenhu Chen<sup>5</sup>†
+							</p>
+
+							<div class="is-size-5 publication-authors" style="
+										margin-top: 30px;
+										font-style: italic;
+										display: flex;
+										flex-direction: column;
+										align-items: center;
+									">
+								<div style="
+											display: flex;
+											flex-direction: row;
+											align-items: center;
+										">
+									<span class="author-block"><b>University of Waterloo</b></span>
+									<span class="author-block"><b><sup>1</sup> University of Toronto</b></span>
+									<span class="author-block"><b><sup>2</sup> HKUST</b></span>
 								</div>
+								<div style="
+											display: flex;
+											flex-direction: row;
+											align-items: center;
+										">
+									<span class="author-block"><b><sup>3</sup> Shanghai University</b></span>
+									<span class="author-block"><b><sup>4</sup> Independent Contributor</b></span>
+									<span class="author-block"><b><sup>5</sup> Vector Institute</b></span>
+									<span class="author-block"><b><sup>6</sup> University of British Columbia</b></span>
+								</div>
+							</div>
+
+							<div class="is-size-5 publication-authors" style="
+										display: flex;
+										flex-direction: column;
+										margin-top: 10px;
+									">
+								<span class="author-block" style="margin-bottom: -25px">*Equal Contribution</span>
+								<br />
+								<div class="display: flex; flex-direction: row">
+									<span class="author-block" style="margin-left: -5px">†Corresponding to:</span>
+									<span class="author-block" style="margin-left: -5px"><a
+											href="mailto:j586yang@uwaterloo.ca">j586yang@uwaterloo.ca</a>,</span>
+									<span class="author-block" style="margin-left: -5px"><a
+											href="mailto:dongfu.jiang@uwaterloo.ca">dongfu.jiang@uwaterloo.ca</a>,</span>
+									<span class="author-block" style="margin-left: -5px"><a
+											href="mailto:wenhuchen@uwaterloo.ca">wenhuchen@uwaterloo.ca</a></span>
+								</div>
+							</div>
+						</div>
+
+						</details>
+
+						<div class="column has-text-centered">
+							<div class="publication-links">
+								<span class="link-block">
+									<a href="https://arxiv.org/abs/2505.20139" class="external-link button is-normal is-rounded is-dark">
+										<span class="icon">
+											<i class="fas fa-file-pdf"></i>
+										</span>
+										<span>Paper (PDF)</span>
+									</a>
+								</span>
+								<span class="link-block">
+									<a href="https://github.com/TIGER-AI-Lab/StructEval"
+										class="external-link button is-normal is-rounded is-dark">
+										<span class="icon">
+											<i class="fab fa-github"></i>
+										</span>
+										<span>Code (GitHub)</span>
+									</a>
+								</span>
+								<span class="link-block">
+									<a href="#leaderboard" class="external-link button is-normal is-rounded is-dark">
+										<span class="icon has-text-white">
+											<i class="fas fa-trophy"></i>
+										</span>
+										<span>Leaderboard</span>
+									</a>
+								</span>
+								<span class="link-block">
+									<a href="https://huggingface.co/datasets/TIGER-Lab/StructEval"
+										class="external-link button is-normal is-rounded is-dark">
+										<span class="icon has-text-white"><i class="fas fa-database"></i></span>
+										<span>Hugging Face</span>
+									</a>
+								</span>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 
-		<section class="hero teaser" style="padding: 50px 0px">
-			<div class="container is-max-desktop has-text-centered">
-				<img
-					src="static/images/figures/intro.png"
-					alt="StructEval Overview"
-					style="max-width: 75%; margin-left: 48px"
-				/>
-				<p style="margin-top: 15px">
-					Our benchmark encompasses 18 distinct formats and 44 task types
-					organized into two complementary subsets: <i>StructEval-T</i>, which
-					assesses the generation of text-only structures such as JSON and TOML,
-					and <i>StructEval-V</i>, which evaluates the quality of visually
-					rendered outputs from code such as HTML and SVG.
+
+	<section class="section modern-leaderboard" id="leaderboard" aria-labelledby="leaderboard-title">
+		<div class="container board-container">
+			<div class="board-heading">
+				<div><p class="eyebrow">The benchmark, measured</p><h2 class="title" id="leaderboard-title">Model leaderboard<span class="heading-period">.</span></h2></div>
+				<div class="snapshot-meta"><span>Snapshot <time id="snapshot-date">loading…</time></span><a href="./static/data/leaderboard.json" download>Download results <span aria-hidden="true">↗</span></a></div>
+			</div>
+			<p class="leaderboard-intro">Compare structured output quality across models. Explore scores by release date or model size, with the latest completed result for each model.</p>
+			<div class="access-controls" role="group" aria-label="Filter leaderboard and chart by model availability">
+				<button type="button" data-access="all" aria-pressed="true">All</button>
+				<button type="button" data-access="open" aria-pressed="false">Open Source</button>
+				<button type="button" data-access="closed" aria-pressed="false">Closed Source</button>
+			</div>
+
+			<div class="chart-card">
+				<div class="chart-heading">
+					<div><p class="eyebrow">Performance explorer</p><h3 id="chart-heading">Score vs. release date</h3></div>
+					<div class="axis-controls" role="group" aria-label="Chart horizontal axis">
+						<button type="button" data-axis="release" aria-pressed="true">Release date</button>
+						<button type="button" data-axis="size" aria-pressed="false">Model size</button>
+					</div>
+				</div>
+				<div class="chart-layout">
+					<div class="chart-main"><div class="chart-legend"><span data-legend-access="open"><i class="chart-key chart-key-open" aria-hidden="true"></i>Open Source</span><span data-legend-access="closed"><i class="chart-key chart-key-closed" aria-hidden="true"></i>Closed Source</span><label class="frontier-control" id="frontier-control"><input type="checkbox" id="frontier-toggle" /><i class="line-key" aria-hidden="true"></i>Best-score line</label><span class="chart-hint">Hover, tap, or focus a point</span></div>
+						<div class="plot-area"><svg id="score-chart" role="group" aria-labelledby="plot-title plot-description"></svg><p class="chart-empty" id="chart-empty" hidden></p></div>
+					</div>
+					<aside class="model-inspector" id="model-inspector" aria-label="Selected model details" aria-live="polite"><p>Select a model to explore its results.</p></aside>
+				</div>
+				<p class="chart-note" id="chart-note"></p>
+			</div>
+
+			<div class="table-toolbar"><p id="result-count" aria-live="polite"></p><label class="model-search"><span>Find a model</span><input id="model-search" type="search" placeholder="Search model or provider…" autocomplete="off" /></label></div>
+			<div class="leaderboard-card"><div class="table-scroll" tabindex="0" role="region" aria-label="Model scores; scroll horizontally for all columns">
+				<table class="modern-table" id="full-results">
+					<caption class="visually-hidden" id="table-caption">StructEval model scores</caption>
+					<thead><tr>
+						<th scope="col">#</th><th scope="col" class="model-heading">Model</th>
+						<th scope="col"><button type="button" data-sort="size">Parameters <span aria-hidden="true">↕</span></button></th>
+						<th scope="col"><button type="button" data-sort="release">Released <span aria-hidden="true">↕</span></button></th>
+						<th scope="col" aria-sort="descending"><button type="button" data-sort="score">Overall <span aria-hidden="true">↓</span></button></th>
+						<th scope="col"><abbr title="Text-only generation">T · Gen</abbr></th><th scope="col"><abbr title="Text-only conversion">T · Conv</abbr></th>
+						<th scope="col"><abbr title="Visual generation">V · Gen</abbr></th><th scope="col"><abbr title="Visual conversion">V · Conv</abbr></th>
+						<th scope="col">Results</th>
+					</tr></thead><tbody id="full-results-body"><tr><td colspan="10">Loading results…</td></tr></tbody>
+				</table>
+			</div></div>
+			<p class="leaderboard-footnote">All models share one overall ranking; filtering preserves their overall ranks. Green rows indicate Open Source; blue rows indicate Closed Source, based on model weight availability. Scores are percentages (higher is better). T = text-only; V = visually renderable; Gen = generation; Conv = conversion. Parameters are total model parameters, with active MoE parameters shown separately. Undisclosed sizes are omitted from the size chart.</p>
+			<noscript><p class="load-error">Enable JavaScript to explore the leaderboard, or <a href="./static/data/leaderboard.json">download the full results snapshot</a>.</p></noscript>
+		</div>
+	</section>
+
+	<section class="hero teaser">
+		<div class="container is-max-desktop has-text-centered">
+			<figure class="overview-figure">
+				<a href="static/images/figures/intro.png" target="_blank" rel="noopener noreferrer" aria-label="View StructEval-T and StructEval-V formats at full size (opens in a new tab)">
+					<img src="static/images/figures/intro.png" width="1764" height="1485" loading="lazy" decoding="async" alt="StructEval-T covers text formats such as JSON, CSV, XML, YAML and TOML; StructEval-V covers renderable formats such as HTML, SVG, charts and diagrams." />
+				</a>
+				<figcaption><a href="static/images/figures/intro.png" target="_blank" rel="noopener noreferrer">View full-size figure ↗</a></figcaption>
+			</figure>
+			<p>
+				<i>StructEval-T</i> evaluates text-only structures such as JSON and TOML.
+				<i>StructEval-V</i> evaluates visually rendered outputs such as HTML and SVG.
+				Together, they cover 18 formats and 44 task types.
+			</p>
+		</div>
+	</section>
+
+	<section class="section" id="abstract" style="padding-top: 70px">
+		<div class="container is-max-desktop">
+			<h2 class="title is-3 has-text-centered" style="margin-bottom: 25px">
+				Abstract
+			</h2>
+			<div class="content has-text-justified">
+				<p>
+					As Large Language Models (LLMs) become integral to software
+					development workflows, their ability to generate structured outputs
+					has become critically important. We introduce <b>StructEval</b>, a
+					comprehensive benchmark for evaluating LLMs' capabilities in
+					producing both non-renderable (JSON, YAML, CSV) and renderable
+					(HTML, React, SVG) structured formats. Unlike prior benchmarks,
+					StructEval systematically evaluates structural fidelity across
+					diverse formats through two paradigms: (1) generation tasks,
+					producing structured output from natural language prompts, and (2)
+					conversion tasks, translating between structured formats.
+				</p>
+				<p>
+					Our benchmark encompasses 18 formats and 44 task types, with
+					metrics for format adherence and structural correctness. The leaderboard
+					includes the latest available result for each model, with new models
+					added as evaluations are completed.
 				</p>
 			</div>
-		</section>
+		</div>
+	</section>
 
-		<section class="section" id="abstract" style="padding-top: 70px">
-			<div class="container is-max-desktop">
-				<h2 class="title is-3 has-text-centered" style="margin-bottom: 25px">
-					Abstract
-				</h2>
-				<div class="content has-text-justified">
-					<p>
-						As Large Language Models (LLMs) become integral to software
-						development workflows, their ability to generate structured outputs
-						has become critically important. We introduce <b>StructEval</b>, a
-						comprehensive benchmark for evaluating LLMs' capabilities in
-						producing both non-renderable (JSON, YAML, CSV) and renderable
-						(HTML, React, SVG) structured formats. Unlike prior benchmarks,
-						StructEval systematically evaluates structural fidelity across
-						diverse formats through two paradigms: (1) generation tasks,
-						producing structured output from natural language prompts, and (2)
-						conversion tasks, translating between structured formats.
-					</p>
-					<p>
-						Our benchmark encompasses 18 formats and 44 types of tasks, with
-						novel metrics for format adherence and structural correctness.
-						Results reveal significant performance gaps—even state-of-the-art
-						models like o1-mini achieve only 75.58% average score, with
-						open-source alternatives lagging approximately 10 points behind. We
-						find generation tasks more challenging than conversion tasks, and
-						producing correct visual content more difficult than generating
-						text-only structures.
-					</p>
-				</div>
-			</div>
-		</section>
+	<hr />
 
-		<hr />
-
-		<section class="section" id="dataset" style="padding-top: 50px">
-			<div class="container is-max-desktop">
-				<h2 class="title is-3 has-text-centered" style="margin-bottom: 25px">
-					Dataset Overview
-				</h2>
-				<div class="content has-text-justified">
-					<p>
-						<b>StructEval</b> comprises <b>2,035 examples</b> covering
-						<b>44 unique structure generation tasks</b> across
-						<b>18 structured output formats</b>. The dataset is organized into
-						two main subsets:
-					</p>
-					<div style="text-align: center; width: 100%; margin-top: 30px">
-						<div
-							class="box"
-							style="
+	<section class="section" id="dataset" style="padding-top: 50px">
+		<div class="container is-max-desktop">
+			<h2 class="title is-3 has-text-centered" style="margin-bottom: 25px">
+				Dataset Overview
+			</h2>
+			<div class="content has-text-justified">
+				<p>
+					<b>StructEval</b> comprises <b>2,035 examples</b> covering
+					<b>44 unique structure generation tasks</b> across
+					<b>18 structured output formats</b>. The dataset is organized into
+					two main subsets:
+				</p>
+				<div style="text-align: center; width: 100%; margin-top: 30px">
+					<div class="box" style="
 								background: #fafafa;
 								padding: 30px;
 								border-radius: 8px;
 								margin: 20px auto;
 								width: 100%;
 								box-sizing: border-box;
-							"
-						>
-							<h5 style="font-size: 1.25rem; margin-bottom: 25px">
-								All 18 Supported Formats
-							</h5>
-							<div
-								style="
+							">
+						<h5 style="font-size: 1.25rem; margin-bottom: 25px">
+							All 18 Supported Formats
+						</h5>
+						<div style="
 									display: grid;
 									grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 									width: 100%;
 									border: 0.5px solid #ccc;
 									gap: 0;
-								"
-							>
-								<div
-									style="
+								">
+							<div style="
 										border: 0.5px solid #ccc;
 										padding: 20px;
 										text-align: center;
-									"
-								>
-									JSON
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									CSV
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									XML
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									YAML
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									TOML
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									HTML
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									React
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									Vue
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									Angular
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									SVG
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									LaTeX
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									Markdown
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									Mermaid
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									TikZ
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									Matplotlib
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									Canvas
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									Vega
-								</div>
-								<div
-									style="
-										border: 0.5px solid #ccc;
-										padding: 20px;
-										text-align: center;
-									"
-								>
-									Typst
-								</div>
+									">
+								JSON
 							</div>
-						</div>
-					</div>
-
-					<div class="columns is-centered" style="margin-top: 30px">
-						<div class="column half">
-							<div class="box has-background-light">
-								<h4
-									class="title is-5 has-text-centered"
-									style="margin-bottom: 10px"
-								>
-									📝 StructEval-T
-								</h4>
-								<p class="has-text-centered">
-									Evaluates text-only structured outputs
-								</p>
-								<hr
-									style="
-										background-color: rgb(122 122 122 / 40%);
-										margin-top: 15px;
-									"
-								/>
-								<ul>
-									<li><b>Formats:</b> JSON, XML, YAML, CSV, TOML</li>
-									<li><b>Tasks:</b> 19 (5 generation, 14 conversion)</li>
-									<li><b>Examples:</b> 950</li>
-									<li>
-										<b>Focus:</b> Syntactic validity & structural correctness
-									</li>
-								</ul>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								CSV
 							</div>
-						</div>
-						<div class="column half">
-							<div class="box has-background-info-light">
-								<h4 class="title has-text-centered" style="margin-bottom: 10px">
-									🎨 StructEval-V
-								</h4>
-								<p class="has-text-centered">
-									Evaluates visually rendered outputs
-								</p>
-								<hr
-									style="
-										background-color: rgb(122 122 122 / 40%);
-										margin-top: 15px;
-									"
-								/>
-								<ul>
-									<li>
-										<b>Formats:</b> HTML, React, SVG, LaTeX, Mermaid, etc.
-									</li>
-									<li><b>Tasks:</b> 25 (13 generation, 12 conversion)</li>
-									<li><b>Examples:</b> 1,085</li>
-									<li><b>Focus:</b> Visual correctness via VQA evaluation</li>
-								</ul>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								XML
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								YAML
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								TOML
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								HTML
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								React
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								Vue
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								Angular
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								SVG
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								LaTeX
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								Markdown
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								Mermaid
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								TikZ
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								Matplotlib
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								Canvas
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								Vega
+							</div>
+							<div style="
+										border: 0.5px solid #ccc;
+										padding: 20px;
+										text-align: center;
+									">
+								Typst
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
 
-		<hr />
-
-		<!-- Examples Section -->
-		<section class="section" id="examples" style="padding: 25px 0px">
-			<div class="container">
-				<h2 class="title is-3 has-text-centered">Example Tasks</h2>
-
-				<div class="columns is-centered">
-					<div class="column is-9">
-						<div class="tabs is-boxed is-centered">
+				<div class="columns is-centered" style="margin-top: 30px">
+					<div class="column half">
+						<div class="box has-background-light">
+							<h4 class="title is-5 has-text-centered" style="margin-bottom: 10px">
+								📝 StructEval-T
+							</h4>
+							<p class="has-text-centered">
+								Evaluates text-only structured outputs
+							</p>
+							<hr style="
+										background-color: rgb(122 122 122 / 40%);
+										margin-top: 15px;
+									" />
 							<ul>
-								<li class="is-active">
-									<a onclick="showExample('generation')">
-										<span>Generation Tasks</span>
-									</a>
-								</li>
+								<li><b>Formats:</b> JSON, XML, YAML, CSV, TOML</li>
+								<li><b>Tasks:</b> 19 (5 generation, 14 conversion)</li>
+								<li><b>Examples:</b> 950</li>
 								<li>
-									<a onclick="showExample('conversion')">
-										<span>Conversion Tasks</span>
-									</a>
-								</li>
-								<li>
-									<a onclick="showExample('rendered')">
-										<span>Rendered Outputs</span>
-									</a>
+									<b>Focus:</b> Syntactic validity & structural correctness
 								</li>
 							</ul>
 						</div>
+					</div>
+					<div class="column half">
+						<div class="box has-background-info-light">
+							<h4 class="title has-text-centered" style="margin-bottom: 10px">
+								🎨 StructEval-V
+							</h4>
+							<p class="has-text-centered">
+								Evaluates visually rendered outputs
+							</p>
+							<hr style="
+										background-color: rgb(122 122 122 / 40%);
+										margin-top: 15px;
+									" />
+							<ul>
+								<li>
+									<b>Formats:</b> HTML, React, SVG, LaTeX, Mermaid, etc.
+								</li>
+								<li><b>Tasks:</b> 25 (13 generation, 12 conversion)</li>
+								<li><b>Examples:</b> 1,085</li>
+								<li><b>Focus:</b> Visual correctness via VQA evaluation</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-						<div id="generation-examples" class="example-content">
-							<div class="box">
-								<h4 class="title is-5">📝 StructEval-T Generation Example</h4>
-								<div class="columns">
-									<div class="column is-6">
-										<h6 class="subtitle is-6">Task Prompt:</h6>
-										<pre style="font-size: 0.85em">
+	<hr />
+
+	<!-- Examples Section -->
+	<section class="section" id="examples" style="padding-top: 25px; padding-bottom: 25px">
+		<div class="container">
+			<h2 class="title is-3 has-text-centered">Example Tasks</h2>
+
+			<div class="columns is-centered">
+				<div class="column is-9">
+					<div class="tabs is-boxed is-centered">
+						<ul>
+							<li class="is-active">
+								<a onclick="showExample('generation')">
+									<span>Generation Tasks</span>
+								</a>
+							</li>
+							<li>
+								<a onclick="showExample('conversion')">
+									<span>Conversion Tasks</span>
+								</a>
+							</li>
+							<li>
+								<a onclick="showExample('rendered')">
+									<span>Rendered Outputs</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+
+					<div id="generation-examples" class="example-content">
+						<div class="box">
+							<h4 class="title is-5">📝 StructEval-T Generation Example</h4>
+							<div class="columns">
+								<div class="column is-6">
+									<h6 class="subtitle is-6">Task Prompt:</h6>
+									<pre style="font-size: 0.85em">
 Please output JSON code.
 
 Task:
-Summarize metadata about a fictional 
+Summarize metadata about a fictional
 scientific article.
 
 Feature Requirements:
@@ -516,28 +523,27 @@ Feature Requirements:
 2. Field "authors" is a list of exactly two items
 3. Each author has "name" and "affiliation"
 4. Field "publication.year" is an integer
-5. Field "keywords" is a list of strings</pre
-										>
-									</div>
-									<div class="column is-6">
-										<h6 class="subtitle is-6">Expected Keywords:</h6>
-										<ul>
-											<li><code>title</code></li>
-											<li><code>authors[0].name</code></li>
-											<li><code>authors[1].affiliation</code></li>
-											<li><code>publication.year</code></li>
-											<li><code>keywords[2]</code></li>
-										</ul>
-									</div>
+5. Field "keywords" is a list of strings</pre>
+								</div>
+								<div class="column is-6">
+									<h6 class="subtitle is-6">Expected Keywords:</h6>
+									<ul>
+										<li><code>title</code></li>
+										<li><code>authors[0].name</code></li>
+										<li><code>authors[1].affiliation</code></li>
+										<li><code>publication.year</code></li>
+										<li><code>keywords[2]</code></li>
+									</ul>
 								</div>
 							</div>
+						</div>
 
-							<div class="box">
-								<h4 class="title is-5">🎨 StructEval-V Generation Example</h4>
-								<div class="columns">
-									<div class="column is-6">
-										<h6 class="subtitle is-6">Task Prompt:</h6>
-										<pre style="font-size: 0.85em">
+						<div class="box">
+							<h4 class="title is-5">🎨 StructEval-V Generation Example</h4>
+							<div class="columns">
+								<div class="column is-6">
+									<h6 class="subtitle is-6">Task Prompt:</h6>
+									<pre style="font-size: 0.85em">
 Please output HTML code.
 
 Task:
@@ -547,47 +553,40 @@ Feature Requirements:
 • Centered &lt;h1&gt; with "Trip Summary"
 • Use a &lt;table&gt; with 3 rows and 2 columns
 • Apply class "highlight" to second row
-• Add &lt;button&gt; labeled "Export PDF"</pre
-										>
-									</div>
-									<div class="column is-6">
-										<h6 class="subtitle is-6">VQA Evaluation:</h6>
-										<ul>
-											<li>
-												<b>Q:</b> What text is in the h1 header?<br /><b>A:</b>
-												Trip Summary
-											</li>
-											<li>
-												<b>Q:</b> How many rows are in the table?<br /><b>A:</b>
-												3
-											</li>
-											<li>
-												<b>Q:</b> What class is on the second row?<br /><b
-													>A:</b
-												>
-												highlight
-											</li>
-											<li>
-												<b>Q:</b> What text is on the button?<br /><b>A:</b>
-												Export PDF
-											</li>
-										</ul>
-									</div>
+• Add &lt;button&gt; labeled "Export PDF"</pre>
+								</div>
+								<div class="column is-6">
+									<h6 class="subtitle is-6">VQA Evaluation:</h6>
+									<ul>
+										<li>
+											<b>Q:</b> What text is in the h1 header?<br /><b>A:</b>
+											Trip Summary
+										</li>
+										<li>
+											<b>Q:</b> How many rows are in the table?<br /><b>A:</b>
+											3
+										</li>
+										<li>
+											<b>Q:</b> What class is on the second row?<br /><b>A:</b>
+											highlight
+										</li>
+										<li>
+											<b>Q:</b> What text is on the button?<br /><b>A:</b>
+											Export PDF
+										</li>
+									</ul>
 								</div>
 							</div>
 						</div>
+					</div>
 
-						<div
-							id="conversion-examples"
-							class="example-content"
-							style="display: none"
-						>
-							<div class="box">
-								<h4 class="title is-5">Format Conversion Examples</h4>
-								<div class="columns">
-									<div class="column is-6">
-										<h6 class="subtitle is-6">JSON → YAML</h6>
-										<pre style="font-size: 0.85em">
+					<div id="conversion-examples" class="example-content" style="display: none">
+						<div class="box">
+							<h4 class="title is-5">Format Conversion Examples</h4>
+							<div class="columns">
+								<div class="column is-6">
+									<h6 class="subtitle is-6">JSON → YAML</h6>
+									<pre style="font-size: 0.85em">
 {
   "name": "StructEval",
   "version": "1.0",
@@ -596,12 +595,11 @@ Feature Requirements:
     "text": ["JSON", "YAML", "XML"],
     "visual": ["HTML", "React", "SVG"]
   }
-}</pre
-										>
-									</div>
-									<div class="column is-6">
-										<h6 class="subtitle is-6">Expected YAML Output</h6>
-										<pre style="font-size: 0.85em">
+}</pre>
+								</div>
+								<div class="column is-6">
+									<h6 class="subtitle is-6">Expected YAML Output</h6>
+									<pre style="font-size: 0.85em">
 name: StructEval
 version: "1.0"
 tasks:
@@ -615,429 +613,246 @@ formats:
   visual:
     - HTML
     - React
-    - SVG</pre
-										>
-									</div>
+    - SVG</pre>
 								</div>
 							</div>
 						</div>
+					</div>
 
-						<div
-							id="rendered-examples"
-							class="example-content"
-							style="display: none"
-						>
-							<h4 class="title is-5 has-text-centered">
-								Example Rendered Outputs
-							</h4>
-							<div class="columns is-multiline">
-								<div class="column is-4">
-									<div class="box">
-										<figure class="image">
-											<img src="static/images/imgs/000107.png" alt="Angular" />
-										</figure>
-										<p class="has-text-centered" style="margin-top: 15px">
-											<b>Angular</b>
-										</p>
-									</div>
+					<div id="rendered-examples" class="example-content" style="display: none">
+						<h4 class="title is-5 has-text-centered">
+							Example Rendered Outputs
+						</h4>
+						<div class="columns is-multiline">
+							<div class="column is-4">
+								<div class="box">
+									<figure class="image">
+										<img src="static/images/imgs/000107.png" alt="Angular" />
+									</figure>
+									<p class="has-text-centered" style="margin-top: 15px">
+										<b>Angular</b>
+									</p>
 								</div>
-								<div class="column is-4">
-									<div class="box">
-										<figure class="image">
-											<img
-												src="static/images/imgs/000829.png"
-												alt="Matplotlib"
-											/>
-										</figure>
-										<p class="has-text-centered" style="margin-top: 15px">
-											<b>Matplotlib</b>
-										</p>
-									</div>
+							</div>
+							<div class="column is-4">
+								<div class="box">
+									<figure class="image">
+										<img src="static/images/imgs/000829.png" alt="Matplotlib" />
+									</figure>
+									<p class="has-text-centered" style="margin-top: 15px">
+										<b>Matplotlib</b>
+									</p>
 								</div>
-								<div class="column is-4">
-									<div class="box">
-										<figure class="image">
-											<img src="static/images/imgs/000936.png" alt="Mermaid" />
-										</figure>
-										<p class="has-text-centered" style="margin-top: 15px">
-											<b>Mermaid</b>
-										</p>
-									</div>
+							</div>
+							<div class="column is-4">
+								<div class="box">
+									<figure class="image">
+										<img src="static/images/imgs/000936.png" alt="Mermaid" />
+									</figure>
+									<p class="has-text-centered" style="margin-top: 15px">
+										<b>Mermaid</b>
+									</p>
 								</div>
-								<div class="column is-4">
-									<div class="box">
-										<figure class="image">
-											<img src="static/images/imgs/001126.png" alt="React" />
-										</figure>
-										<p class="has-text-centered" style="margin-top: 15px">
-											<b>React</b>
-										</p>
-									</div>
+							</div>
+							<div class="column is-4">
+								<div class="box">
+									<figure class="image">
+										<img src="static/images/imgs/001126.png" alt="React" />
+									</figure>
+									<p class="has-text-centered" style="margin-top: 15px">
+										<b>React</b>
+									</p>
 								</div>
-								<div class="column is-4">
-									<div class="box">
-										<figure class="image">
-											<img src="static/images/imgs/001210.png" alt="SVG" />
-										</figure>
-										<p class="has-text-centered" style="margin-top: 15px">
-											<b>SVG</b>
-										</p>
-									</div>
+							</div>
+							<div class="column is-4">
+								<div class="box">
+									<figure class="image">
+										<img src="static/images/imgs/001210.png" alt="SVG" />
+									</figure>
+									<p class="has-text-centered" style="margin-top: 15px">
+										<b>SVG</b>
+									</p>
 								</div>
-								<div class="column is-4">
-									<div class="box">
-										<figure class="image">
-											<img src="static/images/imgs/001312.png" alt="TikZ" />
-										</figure>
-										<p class="has-text-centered" style="margin-top: 15px">
-											<b>TikZ</b>
-										</p>
-									</div>
+							</div>
+							<div class="column is-4">
+								<div class="box">
+									<figure class="image">
+										<img src="static/images/imgs/001312.png" alt="TikZ" />
+									</figure>
+									<p class="has-text-centered" style="margin-top: 15px">
+										<b>TikZ</b>
+									</p>
 								</div>
-								<div class="column is-4">
-									<div class="box">
-										<figure class="image">
-											<img src="static/images/imgs/001509.png" alt="Vega" />
-										</figure>
-										<p class="has-text-centered" style="margin-top: 15px">
-											<b>Vega</b>
-										</p>
-									</div>
+							</div>
+							<div class="column is-4">
+								<div class="box">
+									<figure class="image">
+										<img src="static/images/imgs/001509.png" alt="Vega" />
+									</figure>
+									<p class="has-text-centered" style="margin-top: 15px">
+										<b>Vega</b>
+									</p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 
-		<hr />
+	<hr />
 
-		<section class="section" id="evaluation">
-			<div class="container">
-				<h2 class="title is-3 has-text-centered">Evaluation Framework</h2>
-				<div class="columns is-centered">
-					<div class="column is-9">
-						<div class="content has-text-centered" style="margin-bottom: 50px">
-							<img
-								src="static/images/imgs/annotation_pipeline.png"
-								alt="Evaluation Pipeline"
-								style="max-width: 90%; margin: 20px auto"
-							/>
-						</div>
-						<div class="content has-text-justified">
-							<p>Our evaluation framework employs four core metrics:</p>
-							<div class="columns" style="margin-top: 10px">
-								<div class="column is-3">
-									<div class="box">
-										<h5 class="title is-5">🔧 Render Score (T/V)</h5>
-										<p style="text-align: left">
-											Measures the percentage of generated code that can be
-											successfully loaded or rendered into images
-										</p>
-									</div>
-								</div>
-								<div class="column is-3">
-									<div class="box">
-										<h5 class="title is-5">✓ Syntax Score (T)</h5>
-										<p style="text-align: left">
-											Verifies structural correctness using format-specific
-											parsers or rendering engines
-										</p>
-									</div>
-								</div>
-								<div class="column is-3">
-									<div class="box">
-										<h5 class="title is-5">🔍 Keyword Matching (V)</h5>
-										<p style="text-align: left">
-											Evaluates presence of required structural elements using
-											path-based rules
-										</p>
-									</div>
-								</div>
-								<div class="column is-3">
-									<div class="box">
-										<h5 class="title is-5">👁️ VQA Score (V)</h5>
-										<p style="text-align: left">
-											Assesses visual correctness through GPT-4V-based question
-											answering (V tasks only)
-										</p>
-									</div>
-								</div>
-							</div>
-							
-							<div style="margin-top: 40px">
-								<h3 class="title is-4 has-text-centered">Score Aggregation Methods</h3>
-								<div class="columns" style="margin-top: 20px">
-									<div class="column is-6">
-										<div class="box has-background-info-light">
-											<h5 class="title is-5 has-text-centered">🎨 Renderable Formats</h5>
-											<p class="has-text-centered" style="margin-bottom: 15px">
-												<em>HTML, React, SVG, LaTeX, Mermaid, etc.</em>
-											</p>
-											<div class="content">
-												<pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; font-size: 0.9em;">final_score = (0.2 × render_score) + 
-              (0.1 × keyword_matching) + 
-              (0.7 × vqa_score)</pre>
-											</div>
-										</div>
-									</div>
-									<div class="column is-6">
-										<div class="box has-background-light">
-											<h5 class="title is-5 has-text-centered">📝 Non-Renderable Formats</h5>
-											<p class="has-text-centered" style="margin-bottom: 15px">
-												<em>JSON, XML, YAML, CSV, TOML</em>
-											</p>
-											<div class="content">
-												<pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; font-size: 0.9em;">final_score = (0.2 × render_score) + 
-              (0.8 × syntax_score)</pre>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<hr />
-
-		<section
-			class="section"
-			style="padding-bottom: 20px; padding-top: 0px"
-			id="leaderboard"
-		>
-			<div class="container">
-				<div class="columns is-centered">
-					<div class="column is-full has-text-centered content is-9">
-						<h2 class="title is-3" id="leaderboard">Leaderboard</h2>
-
-						<div class="content has-text-justified">
-							<p>
-								We evaluate various state-of-the-art LLMs in a zero-shot
-								setting. The table below shows the performance breakdown across
-								our four task categories. Click on the column headers to expand
-								detailed results.
-							</p>
-						</div>
-
-						<div class="model-labels-container">
-							<span class="leaderboard-label open_source">Open-Source</span>
-							<span class="leaderboard-label proprietary">Closed-Source</span>
-						</div>
-						<br />
-
-						<div class="leaderboard-container">
-							<div class="table-wrapper">
-								<table id="structeval-table">
-									<thead>
-										<tr>
-											<th
-												rowspan="2"
-												class="sortable clickable"
-												data-sort="string"
-											>
-												Model
-											</th>
-											<th
-												rowspan="2"
-												class="sortable clickable"
-												data-sort="string"
-											>
-												Type
-											</th>
-											<th colspan="2" style="text-align: center">
-												StructEval-T
-											</th>
-											<th colspan="2" style="text-align: center">
-												StructEval-V
-											</th>
-											<th
-												rowspan="2"
-												class="sortable clickable"
-												data-sort="number"
-											>
-												Average
-											</th>
-										</tr>
-										<tr>
-											<th class="sortable clickable" data-sort="number">
-												Generation
-											</th>
-											<th class="sortable clickable" data-sort="number">
-												Conversion
-											</th>
-											<th class="sortable clickable" data-sort="number">
-												Generation
-											</th>
-											<th class="sortable clickable" data-sort="number">
-												Conversion
-											</th>
-										</tr>
-									</thead>
-									<tbody>
-										<!-- Table body will be populated dynamically -->
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<hr />
-
-				<div class="columns is-centered" id="analysis">
-					<div class="column is-full has-text-centered content is-9">
-						<h2 class="title is-3">Performance Analysis</h2>
-						<div class="columns" style="margin-top: 25px">
-							<div class="column is-6">
-								<canvas id="task_type_chart"></canvas>
-								<p class="has-text-centered">Performance by Task Type</p>
-							</div>
-							<div class="column is-6">
-								<canvas id="format_difficulty_chart"></canvas>
-								<p class="has-text-centered">
-									Challenging Formats (Average Score < 50%)
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<hr />
-
-				<div class="container" style="padding-top: 25px; padding-bottom: 50px">
-					<h2 class="title is-3 has-text-centered">Key Findings</h2>
-					<div class="columns is-centered" style="margin-top: 25px">
-						<div class="column is-9">
-							<div class="columns is-multiline">
-								<div class="column is-6">
-									<div class="box" style="height: 100%">
-										<h5 class="title is-5">
-											<span class="icon has-text-danger">
-												<i class="fas fa-chart-line"></i>
-											</span>
-											Performance Gap
-										</h5>
-										<p>
-											Even state-of-the-art models struggle with structured
-											output generation. GPT-4o achieves only
-											<b>76.02%</b> average score, while the best open-source
-											model (Qwen3-4B) lags at <b>67.04%</b>.
-										</p>
-									</div>
-								</div>
-								<div class="column is-6">
-									<div class="box" style="height: 100%">
-										<h5 class="title is-5">
-											<span class="icon has-text-info">
-												<i class="fas fa-balance-scale"></i>
-											</span>
-											Task Difficulty
-										</h5>
-										<p>
-											Generation tasks are generally
-											<b>more challenging</b> than conversion tasks. Visual
-											rendering (StructEval-V) proves <b>harder</b> than
-											text-only structures (StructEval-T).
-										</p>
-									</div>
-								</div>
-								<div class="column is-6">
-									<div class="box" style="height: 100%">
-										<h5 class="title is-5">
-											<span class="icon has-text-warning">
-												<i class="fas fa-exclamation-triangle"></i>
-											</span>
-											Challenging Formats
-										</h5>
-										<p>
-											Several formats remain particularly difficult for all
-											models: <b>Text→TOML</b> (35.8%),
-											<b>Text→Mermaid</b> (18.9%), and
-											<b>Matplotlib→TikZ</b> (28.4%) conversions.
-										</p>
-									</div>
-								</div>
-								<div class="column is-6">
-									<div class="box" style="height: 100%">
-										<h5 class="title is-5">
-											<span class="icon has-text-success">
-												<i class="fas fa-check-circle"></i>
-											</span>
-											Saturated Tasks
-										</h5>
-										<p>
-											Some tasks are effectively solved with scores >90%: JSON,
-											HTML, CSV generation and YAML→JSON, React→HTML conversions
-											show near-perfect performance.
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<hr />
-
-		<section
-			class="section"
-			id="citation"
-			style="padding-top: 25px; padding-bottom: 100px"
-		>
-			<div class="container is-max-desktop content">
-				<h2 class="title is-3 has-text-centered">Citation</h2>
-				<pre><code>@inproceedings{yue2023mmmu,
-  title={MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI},
-  author={Xiang Yue and Yuansheng Ni and Kai Zhang and Tianyu Zheng and Ruoqi Liu and Ge Zhang and Samuel Stevens and Dongfu Jiang and Weiming Ren and Yuxuan Sun and Cong Wei and Botao Yu and Ruibin Yuan and Renliang Sun and Ming Yin and Boyuan Zheng and Zhenzhu Yang and Yibo Liu and Wenhao Huang and Huan Sun and Yu Su and Wenhu Chen},
-  booktitle={Proceedings of CVPR},
-  year={2024},
-}</code></pre>
-			</div>
-		</section>
-
-		<footer class="footer">
+	<section class="section" id="evaluation">
+		<div class="container">
+			<h2 class="title is-3 has-text-centered">Evaluation Framework</h2>
 			<div class="columns is-centered">
 				<div class="column is-9">
-					<div class="content">
-						<p style="text-align: center">
-							This website is website adapted from
-							<a href="https://nerfies.github.io/">Nerfies</a> and
-							<a href="https://mathvista.github.io/">MathVista</a>, licensed
-							under a
-							<a
-								rel="license"
-								href="http://creativecommons.org/licenses/by-sa/4.0/"
-								>Creative Commons Attribution-ShareAlike 4.0 International
-								License</a
-							>.
-						</p>
+					<div class="content has-text-centered" style="margin-bottom: 50px">
+						<img src="static/images/imgs/annotation_pipeline.png" alt="Evaluation Pipeline"
+							style="max-width: 90%; margin: 20px auto" />
+					</div>
+					<div class="content has-text-justified">
+						<p>Our evaluation framework employs four core metrics:</p>
+						<div class="columns" style="margin-top: 10px; align-items: stretch;">
+							<div class="column is-3">
+								<div class="box" style="height: 100%; display: flex; flex-direction: column;">
+									<h5 class="title is-5"
+										style="min-height: 60px; display: flex; align-items: center; justify-content: center; text-align: center; margin-bottom: 15px;">
+										🔧 Render Score (T/V)</h5>
+									<p style="text-align: left; flex: 1;">
+										Binary metric (0 or 1) indicating whether the generated code can be
+										successfully loaded or rendered without syntax errors
+									</p>
+								</div>
+							</div>
+							<div class="column is-3">
+								<div class="box" style="height: 100%; display: flex; flex-direction: column;">
+									<h5 class="title is-5"
+										style="min-height: 60px; display: flex; align-items: center; justify-content: center; text-align: center; margin-bottom: 15px;">
+										✓ Syntax Score (T)</h5>
+									<p style="text-align: left; flex: 1;">
+										Verifies structural correctness (existence of required keys, relationships between keys, etc.) using
+										dot-path rules. Calculated as the percentage of dot-path rules satisfied by the generated output
+										format.
+									</p>
+								</div>
+							</div>
+							<div class="column is-3">
+								<div class="box" style="height: 100%; display: flex; flex-direction: column;">
+									<h5 class="title is-5"
+										style="min-height: 60px; display: flex; align-items: center; justify-content: center; text-align: center; margin-bottom: 15px;">
+										🔍 Keyword Matching (V)</h5>
+									<p style="text-align: left; flex: 1;">
+										Evaluates presence of desired keywords using exact string matching. Calculated as the percentage of
+										keywords found in the raw generated output code.
+									</p>
+								</div>
+							</div>
+							<div class="column is-3">
+								<div class="box" style="height: 100%; display: flex; flex-direction: column;">
+									<h5 class="title is-5"
+										style="min-height: 60px; display: flex; align-items: center; justify-content: center; text-align: center; margin-bottom: 15px;">
+										👁️ VQA Score (V)</h5>
+									<p style="text-align: left; flex: 1;">
+										Assesses visual correctness of rendered content through question-answer pairs. Calculated as the
+										percentage of Q&A pairs satisfied by the rendered output.
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div style="margin-top: 40px">
+							<h3 class="title is-4 has-text-centered">Score Aggregation Methods</h3>
+							<div class="columns" style="margin-top: 20px; align-items: stretch;">
+								<div class="column is-6">
+									<div class="box has-background-info-light"
+										style="height: 100%; display: flex; flex-direction: column;">
+										<h5 class="title is-5 has-text-centered">🎨 Renderable Formats</h5>
+										<p class="has-text-centered" style="margin-bottom: 15px">
+											<em>HTML, React, SVG, LaTeX, Mermaid, etc.</em>
+										</p>
+										<div class="content" style="flex: 1;">
+											<pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; font-size: 0.9em;">Final Score = (0.2 × Render Score) +
+             (0.1 × Keyword Matching) +
+             (0.7 × VQA Score)</pre>
+										</div>
+									</div>
+								</div>
+								<div class="column is-6">
+									<div class="box has-background-light" style="height: 100%; display: flex; flex-direction: column;">
+										<h5 class="title is-5 has-text-centered">📝 Non-Renderable Formats</h5>
+										<p class="has-text-centered" style="margin-bottom: 15px">
+											<em>JSON, XML, YAML, CSV, TOML</em>
+										</p>
+										<div class="content" style="flex: 1;">
+											<pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; font-size: 0.9em;">Final Score = (0.2 × Render Score) +
+             (0.8 × Syntax Score)</pre>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</footer>
+		</div>
+	</section>
 
-		<script>
-			function showExample(type) {
-				// Hide all example contents
-				document.querySelectorAll(".example-content").forEach((el) => {
-					el.style.display = "none";
-				});
+	<hr />
 
-				// Remove active class from all tabs
-				document.querySelectorAll(".tabs li").forEach((el) => {
-					el.classList.remove("is-active");
-				});
+	<section class="section" id="citation" style="padding-top: 25px; padding-bottom: 100px">
+		<div class="container is-max-desktop content">
+			<h2 class="title is-3 has-text-centered">Cite StructEval</h2>
+			<p>Please cite <a href="https://arxiv.org/abs/2505.20139" target="_blank" rel="noopener noreferrer">StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs</a>:</p>
+			<pre><code>@misc{yang2025structeval,
+  title={{StructEval}: Benchmarking {LLMs}' Capabilities to Generate Structural Outputs},
+  author={Jialin Yang and Dongfu Jiang and Lipeng He and Sherman Siu and Yuxuan Zhang and Disen Liao and Zhuofeng Li and Huaye Zeng and Yiming Jia and Haozhe Wang and Benjamin Schneider and Chi Ruan and Wentao Ma and Zhiheng Lyu and Yifei Wang and Yi Lu and Quy Duc Do and Ziyan Jiang and Ping Nie and Wenhu Chen},
+  year={2025},
+  eprint={2505.20139},
+  archivePrefix={arXiv},
+  primaryClass={cs.SE},
+  doi={10.48550/arXiv.2505.20139},
+  url={https://arxiv.org/abs/2505.20139}
+}</code></pre>
+		</div>
+	</section>
 
-				// Show selected content and activate tab
-				document.getElementById(type + "-examples").style.display = "block";
-				event.target.closest("li").classList.add("is-active");
-			}
-		</script>
-	</body>
+	<footer class="footer">
+		<div class="columns is-centered">
+			<div class="column is-9">
+				<div class="content">
+					<p style="text-align: center">
+						This website is adapted from
+						<a href="https://nerfies.github.io/">Nerfies</a> and
+						<a href="https://mathvista.github.io/">MathVista</a>, licensed
+						under a
+						<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
+							Attribution-ShareAlike 4.0 International
+							License</a>.
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		function showExample(type) {
+			// Hide all example contents
+			document.querySelectorAll(".example-content").forEach((el) => {
+				el.style.display = "none";
+			});
+
+			// Remove active class from all tabs
+			document.querySelectorAll(".tabs li").forEach((el) => {
+				el.classList.remove("is-active");
+			});
+
+			// Show selected content and activate tab
+			document.getElementById(type + "-examples").style.display = "block";
+			event.target.closest("li").classList.add("is-active");
+		}
+	</script>
+</body>
+
 </html>
